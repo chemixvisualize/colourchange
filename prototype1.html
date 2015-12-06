@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<title>
+		ChemixVisualise
+	</title>
+	<link rel="icon" type="image/png" href="index-icon.png">
+	<meta name="description" content=""/>
+	<style type="text/css">body{ margin:0; background-color:rgba(255,255,255,1);}
+	.page{ position:relative; }
+	</style>
+</head>
+<body>
+<script type="text/javascript">
+
+function changeCursor(el, cursor)
+{
+	el.style.cursor = cursor;
+}
+
+function changeDimensions() {
+
+		var showme = document.getElementById("visiblerect");
+		var current = document.getElementById('rect1').getBBox().height;
+		var current1 = document.getElementById('tapinrect').getBBox().height;
+		
+		if(current>4.2 && current1<111)
+		{   
+			showme.style.display = "";
+			if(showme.style.visibility == "hidden" ) {
+				showme.style.visibility = "visible";
+			}
+			
+		 setTimeout(function(){showme.style.visibility = "hidden"; }, 1000);
+			
+				
+				console.log(current);
+				current = current - 4.97;
+				document.getElementById("rect1").setAttribute("height", current);
+				//console.log(current);
+
+				
+					/*var current2 = document.getElementById('visiblerect').getBBox().height;
+				console.log(current2);
+				current2 = current2 - 4.5;
+				document.getElementById("visiblerect").setAttribute("height", current2);
+				console.log(current2);*/
+				
+						
+				
+				console.log(current1);
+				current1 = current1 + 2.27;
+				document.getElementById("tapinrect").setAttribute("height", current1);
+				//console.log(current1);
+				
+		}
+		else
+		{
+			var button = document.getElementById("button");
+			changeCursor(button, 'default');
+			showme.style.visibility = "hidden";
+			button.style.fill="#809797";
+		}
+			
+
+	}
+	
+	function change(v){
+		//changeDimensions();
+		document.getElementById("tapinrect").setAttribute("height", "5"); 
+		document.getElementById("rect1").setAttribute("height", "229"); 
+		var button = document.getElementById("button");
+			changeCursor(button, 'pointer');
+			
+			button.style.fill="#6F0C0C";
+		document.getElementById("visiblerect").setAttribute("fill", v); 
+		document.getElementById("round").setAttribute("fill", v); 
+		document.getElementById("tapinrect1").setAttribute("fill", v); 
+	} 
+</script>
+
+<div class="page">
+<div>
+	<form name="f"> 
+	<select onchange="change(this.value)"> 
+	<option value="purple">purple</option> 
+		<option value="orange">orange</option> 
+		
+		<option value="cyan">cyan</option>
+		
+		<option value="red">red</option>
+		<option value="green">green</option> 
+		<option value="blue">blue</option>
+	</select> 
+	</form>
+</div>
+	<div class="svg-layer">
+		<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+		class="" pageAlignment="none" x="500px" y="0px" width="980px" height="655px" viewBox="0 0 980 655" enable-background="new 0 0 980 655" xml:space="preserve">
+		<defs xmlns=""/>
+		<g xmlns="" type="LAYER" name="workspace" id="workspace" locked="true"/>
+		<g xmlns="" type="LAYER" name="Layer 01" id="Layer 01">
+				
+			<path id="round" transform="matrix(1 0 0 1 317.19410569105685 421.8292682926878)" 
+					width="223.72967479674804" height="229.77642276422768" stroke-width="2" 
+					stroke-miterlimit="3" stroke="#000000" fill="#CA36B3" 
+					d="M0,114.88821138211384 C0,51.43719853658537 50.083588048780506,0 111.86483739837402,
+					0 C173.64608674796753,0 223.72967479674804,51.43719853658537 223.72967479674804,
+					114.88821138211384 C223.72967479674804,178.33922422764232 173.64608674796753,229.77642276422768 111.86483739837402,
+					229.77642276422768 C50.083588048780506,229.77642276422768 0,178.33922422764232 0,114.88821138211384 Z "/>
+			
+			<rect  id="tapinrect1" width="40" height="105" x="406.5" y="29"
+					stroke="none"   fill="#CA36B3"/>
+				 
+			 <rect id="rect1" width="225" height="229" x="316" y="422"
+					style="stroke:none; position:fixed; bottom:0;" fill="white"/>
+		
+			<circle id="changecle"
+					fill="none" stroke="#000000" stroke-width="3"  cx="429" cy="537" r="113.5">
+			</circle>
+			<!--<circle id="changecle"
+					fill="white" stroke="none" stroke-width="0"  cx="429" cy="537" r="113">
+			</circle>-->
+			
+			<path id="rounbrect" transform="matrix(1 0 0 1 408.515243902439 300.193089430901)" width="39.90853658536605" height="122.96747967479484" 
+			stroke-width="1.7357305838808736" stroke-miterlimit="3" stroke="#000000" fill="#FFFFFF" fill-opacity="0.8466666666666667" 
+			d="M0,0 L39.90853658536605,0 L39.90853658536605,122.96747967479484 L0,122.96747967479484 L0,0 Z "/>
+			
+			<path id="roundsrect" transform="matrix(1 0 0 1 392.79369918699194 278.42479674797426)" width="70.14227642276421" height="21.76829268292687" 
+			stroke-width="2" stroke-miterlimit="3" stroke="#000000" fill="#FFFFFF" fill-opacity="0.6866666666666666" 
+			d="M0,0 L70.14227642276421,0 L70.14227642276421,21.76829268292687 L0,21.76829268292687 L0,0 Z "/>
+			
+			<path id="taprect" transform="matrix(1 0 0 1 405.18292682926835 23.78048780487981)" width="43.24085365853671" height="112.01219512194946" 
+			stroke-width="1.2952318598522157" stroke-miterlimit="3" stroke="#000000" fill="none" fill-opacity="1" 
+			d="M0,1.4210854715202004e-14 L43.24085365853671,1.4210854715202004e-14 L43.24085365853671,112.01219512194947 L0,112.01219512194947 L0,1.4210854715202004e-14 Z "/>
+			
+			 <rect id="tapinrect" width="40.2" height="5" x="406.5" y="25"
+				 stroke="none"   fill="white"/>
+			
+			<path transform="matrix(1 0 0 1 447.7540650406502 135.82317073170583)" width="25.274390243902417" height="15.573620995990353" 
+			stroke-width="1.0964312616259249" stroke-miterlimit="3" stroke="#000000" fill="#FFFFFF" 
+			d="M-4.547473508864641e-13,5.684341886080802e-14 L-25.27439024390287,15.57362099599041 "/>
+			
+			<path transform="matrix(6.123233995736766e-17 1 -1 6.123233995736766e-17 428.62723465276395 151.63871614509594)" width="15.693594193875498" height="22.57032408365933" 
+			stroke-width="1.0401030558692645" stroke-miterlimit="3" stroke="#000000" fill="#FFFFFF" 
+			d="M-3.410605131648481e-13,2.2737367544323206e-13 L-15.693594193875839,22.570324083659557 "/>
+			
+			<path id="srect" transform="matrix(1 0 0 1 432.12398373983615 148.73419010167987)" width="10.975609756097128" height="80.00000000000006" 
+			stroke-width="2.0306453377545823" stroke-miterlimit="3" stroke="#000000" fill="#FFFFFF" fill-opacity="0.6466666666666666" 
+			d="M0,0 L-10.975609756097128,0 L-10.975609756097128,80.00000000000006 L0,80.00000000000006 L0,0 Z "/>
+				   
+			<rect id="visiblerect" width="10.98" height="419" x="421.15" y="230"
+				style="visibility: hidden;display=''" stroke="none"   fill="#CA36B3" />
+			
+			<path id="button" 
+			onmouseover="changeCursor(this,'pointer');" onmouseout="changeCursor(this,'default');" onclick="changeDimensions()"
+			transform="matrix(1 0 0 1 401.02642276422773 181.38211382113707)" width="53.048780487804834" height="12.804878048780495" 
+			stroke-width="2.8869164135825502" stroke-miterlimit="3" stroke="#000000" fill="#6F0C0C" 
+			d="M0,0 L53.048780487804834,0 L53.048780487804834,12.804878048780495 L0,12.804878048780495 L0,0 Z "/>
+		</g>
+		</svg>
+	</div>
+<div class="html-layer"/>
+</div>
+</body>
+</html>
+<!--
+http://www.carto.net/svg/manipulating_svg_with_dom_ecmascript/
+
+http://www.informit.com/articles/article.aspx?p=1609153&seqNum=3
+
+http://srufaculty.sru.edu/david.dailey/svg/intro/partf_c.html
+
+http://tutorials.jenkov.com/svg/scripting.html
+
+http://benfrain.com/selecting-svg-inside-tags-with-javascript/
+
+http://www.carto.net/svg/manipulating_svg_with_dom_ecmascript/
+
+http://apike.ca/prog_svg_jsanim.html
+
+http://edutechwiki.unige.ch/en/Using_SVG_with_HTML5_tutorial
+
+http://www.sitepoint.com/surviving-the-zombie-apocalypse-manipulating-svg-with-javascript/

@@ -12,6 +12,113 @@
 	</style>
 </head>
 <body>
+<script type="text/javascript">
+function changeCursor(el, cursor)
+{
+	el.style.cursor = cursor;
+}
+	
+function changeDimensions() {
+
+		var showme = document.getElementById("visiblerect");
+		var current = document.getElementById('rect1').getBBox().height;
+		var current1 = document.getElementById('tapinrect').getBBox().height;
+		var button2 = document.getElementById("buttombutton");
+		
+		if(current>0 && current<=250)
+		{
+					changeCursor(button2, 'pointer');
+					button2.style.fill="#E00606";
+		}
+	
+		
+		if(current>=100 && current1<91)
+		{   
+			showme.style.display = "";
+			if(showme.style.visibility == "hidden" ) {
+				showme.style.visibility = "visible";
+			}
+			
+		 setTimeout(function(){showme.style.visibility = "hidden"; }, 1000);
+			
+				
+				console.log(current);
+				current = current - 10;
+				document.getElementById("rect1").setAttribute("height", current);
+				//console.log(current);
+
+				
+					/*var current2 = document.getElementById('visiblerect').getBBox().height;
+				console.log(current2);
+				current2 = current2 - 4.5;
+				document.getElementById("visiblerect").setAttribute("height", current2);
+				console.log(current2);*/
+				
+						
+				
+				console.log(current1);
+				current1 = current1 + 5.7;
+				document.getElementById("tapinrect").setAttribute("height", current1);
+				//console.log(current1);
+				
+		}
+		
+		else
+		{
+			var button = document.getElementById("tapbutton");
+			changeCursor(button, 'default');
+			showme.style.visibility = "hidden";
+			button.style.fill="#809797";
+		}
+			
+
+	}
+	function changeHeight() {
+
+		var showme = document.getElementById("visiblerect2");
+		var current = document.getElementById('rect1').getBBox().height;
+		var button2 = document.getElementById("buttombutton");
+		
+		if(current>0 && current<=240)
+		{   
+			
+		 	showme.style.display = "";
+			if(showme.style.visibility == "hidden" ) {
+				showme.style.visibility = "visible";
+			}
+			
+		 setTimeout(function(){showme.style.visibility = "hidden"; }, 1000);
+			
+				
+				console.log(current);
+				current = current + 10;
+				document.getElementById("rect1").setAttribute("height", current);
+				
+		}
+		
+		else
+		{
+			changeCursor(button2, 'default');
+			showme.style.visibility = "hidden";
+			button2.style.fill="#809797";
+		}
+		
+			
+}
+	function change(v){
+		//changeDimensions();
+		document.getElementById("tapinrect").setAttribute("height", "5"); 
+		document.getElementById("rect1").setAttribute("height", "229"); 
+		var button = document.getElementById("tapbutton");
+			changeCursor(button, 'pointer');
+			
+			button.style.fill="#6F0C0C";
+		document.getElementById("visiblerect").setAttribute("fill", v); 
+		document.getElementById("round").setAttribute("fill", v); 
+		document.getElementById("tapinrect1").setAttribute("fill", v); 
+	} 
+</script>
+
 <div class="page">
 <div class="svg-layer">
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="" pageAlignment="none" x="0px" y="0px" width="1366px" height="659px" viewBox="0 0 1366 659" enable-background="new 0 0 1366 659" xml:space="preserve">
@@ -20,20 +127,31 @@
 <g xmlns="" id="Layer 01" type="LAYER" name="Layer 01">
 	<path id="borderrect" transform="matrix(1 0 0 1 10.81772357723547 5.357723577235916)" width="1339.8885772357721" height="650.9634146341466" stroke-width="2.9947474589647967" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.36" d="M-1.4210854715202004e-14,-2.842170943040401e-14 L1339.8885772357721,-2.842170943040401e-14 L1339.8885772357721,650.9634146341466 L-1.4210854715202004e-14,650.9634146341466 L-1.4210854715202004e-14,-2.842170943040401e-14 Z "/>
 
-	<path transform="matrix(1 0 0 1 508.6016260162617 13.585365853658573)" width="52" height="98.92682926829268" stroke-width="1.5456027648292485" stroke-miterlimit="3" stroke="#000000" fill="#FFFFFF" fill-opacity="0.5266666666666666" d="M2.2737367544323206e-13,-2.842170943040401e-14 L52.00000000000023,-2.842170943040401e-14 L52.00000000000023,98.92682926829265 L2.2737367544323206e-13,98.92682926829265 L2.2737367544323206e-13,-2.842170943040401e-14 Z "/>
+	<path id="taprectbh" transform="matrix(1 0 0 1 508.6016260162617 13.585365853658573)" width="52" height="98.92682926829268" stroke-width="1.5456027648292485" stroke-miterlimit="3" stroke="#000000" fill="#FFFFFF" fill-opacity="0.5266666666666666" d="M2.2737367544323206e-13,-2.842170943040401e-14 L52.00000000000023,-2.842170943040401e-14 L52.00000000000023,98.92682926829265 L2.2737367544323206e-13,98.92682926829265 L2.2737367544323206e-13,-2.842170943040401e-14 Z "/>
 
 	<path transform="matrix(1 0 0 1 507.85283246382886 113.38062765173275)" width="28.693179571678" height="15.111396475888483" stroke-width="1.233254162978478" stroke-miterlimit="3" stroke="#000000" fill="#FFFFFF" fill-opacity="0.5266666666666666" d="M0,0 L28.693179571678,15.111396475888483 "/>
 
-	<path transform="matrix(1 0 0 1 536.5460120355044 128.71356884306863)" width="24.735515780919854" height="16.082653744408276" stroke-width="1.5727918722348495" stroke-miterlimit="3" stroke="#000000" fill="#FFFFFF" fill-opacity="0.5266666666666666" d="M-1.1368683772161603e-13,0 L24.73551578091974,-16.082653744408276 "/>
-
-	<path transform="matrix(1 0 0 1 510.2288617886181 23.000000000000313)" width="48.19999999999993" height="89.78252032520322" stroke-width="0" stroke-miterlimit="3" stroke="#FFFFFF" stroke-opacity="0.07333333333333333" fill="#F51050" d="M-5.684341886080801e-13,1.4210854715202004e-14 L48.19999999999936,1.4210854715202004e-14 L48.19999999999936,89.78252032520324 L-5.684341886080801e-13,89.78252032520324 L-5.684341886080801e-13,1.4210854715202004e-14 Z "/>
-
+	<path transform="matrix(1 0 0 1 536.5460120355044 128.71356884306863)" width="24.735515780919854" fill-opacity="1" height="16.082653744408276" stroke-width="1.5727918722348495" stroke-miterlimit="3" stroke="#000000" fill="#FFFFFF" fill-opacity="0.5266666666666666" d="M-1.1368683772161603e-13,0 L24.73551578091974,-16.082653744408276 "/>
+	
+	<!-- <path id="taprectfr" transform="matrix(1 0 0 1 510.2288617886181 23.000000000000313)" width="48.19999999999993" height="89.78252032520322" stroke-width="0" stroke-miterlimit="3" stroke="#FFFFFF" stroke-opacity="0.07333333333333333" fill="#F51050" d="M-5.684341886080801e-13,1.4210854715202004e-14 L48.19999999999936,1.4210854715202004e-14 L48.19999999999936,89.78252032520324 L-5.684341886080801e-13,89.78252032520324 L-5.684341886080801e-13,1.4210854715202004e-14 Z "/>
+	-->
+	<rect  id="taprectfr" width="48.2" height="89.78252032520322" x="510.23" y="23" stroke="none" fill="#CA36B3"/>
+	
+	<rect id="tapinrect" width="48.2" height="5" x="510.23" y="17" stroke="none"   fill="white"/>
+	
 	<path transform="matrix(1 0 0 1 526.2396583699518 123.26015722189528)" width="18.056212199074707" height="70.95732245290156" stroke-width="0.8173176587362239" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" d="M1.1368683772161603e-13,8.526512829121202e-14 L18.05621219907482,8.526512829121202e-14 L18.05621219907482,70.95732245290165 L1.1368683772161603e-13,70.95732245290165 L1.1368683772161603e-13,8.526512829121202e-14 Z "/>
 
-	<path transform="matrix(1 0 0 1 514.6373339836617 138.87601626016328)" width="42.146341463414615" height="39.024390243902474" stroke-width="3" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#E00606" d="M0,19.512195121951237 C0,8.735906341463423 9.434778848780484,0 21.073170731707307,0 C32.71156261463413,0 42.146341463414615,8.735906341463423 42.146341463414615,19.512195121951237 C42.146341463414615,30.28848390243905 32.71156261463413,39.024390243902474 21.073170731707307,39.024390243902474 C9.434778848780484,39.024390243902474 0,30.28848390243905 0,19.512195121951237 Z "/>
+	<path id="tapbutton" onmouseover="changeCursor(this,'pointer');" onmouseout="changeCursor(this,'default');" onclick="changeDimensions()"
+		transform="matrix(1 0 0 1 514.6373339836617 138.87601626016328)" width="42.146341463414615" height="39.024390243902474" stroke-width="3" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#E00606" d="M0,19.512195121951237 C0,8.735906341463423 9.434778848780484,0 21.073170731707307,0 C32.71156261463413,0 42.146341463414615,8.735906341463423 42.146341463414615,19.512195121951237 C42.146341463414615,30.28848390243905 32.71156261463413,39.024390243902474 21.073170731707307,39.024390243902474 C9.434778848780484,39.024390243902474 0,30.28848390243905 0,19.512195121951237 Z "/>
 
-	<path transform="matrix(1 0 0 1 411.37804878049366 359.3252032520355)" width="250" height="250" stroke-width="3.0713578092363414" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.05333333333333334" d="M-1.1368683772161603e-13,124.99999999999977 C-1.1368683772161603e-13,55.96440000000007 55.96439999999984,0 125,0 C194.03559999999982,0 249.9999999999999,55.96440000000007 249.9999999999999,124.99999999999977 C249.9999999999999,194.03559999999982 194.03559999999982,250 125,250 C55.96439999999984,250 -1.1368683772161603e-13,194.03559999999982 -1.1368683772161603e-13,124.99999999999977 Z "/>
-
+	<path id="round" transform="matrix(1 0 0 1 411.37804878049366 359.3252032520355)" width="250" height="250" stroke-width="3" stroke-miterlimit="3" stroke="#000000" stroke-opacity="1" fill="#CA36B3" fill-opacity="1" d="M-1.1368683772161603e-13,124.99999999999977 C-1.1368683772161603e-13,55.96440000000007 55.96439999999984,0 125,0 C194.03559999999982,0 249.9999999999999,55.96440000000007 249.9999999999999,124.99999999999977 C249.9999999999999,194.03559999999982 194.03559999999982,250 125,250 C55.96439999999984,250 -1.1368683772161603e-13,194.03559999999982 -1.1368683772161603e-13,124.99999999999977 Z "/>
+		<rect id="rect1" width="250" height="250" x="411.38" y="359.33"
+					style="stroke:none; position:fixed; bottom:0;" fill="white"/>
+		
+		<circle id="changecle"
+					fill="none" stroke="#000000" stroke-width="3"  cx="536.38" cy="484.33" r="125">
+		</circle>
+			
 	<path transform="matrix(1 0 0 1 513.506097560976 253.15243902439647)" width="43.05785332763037" height="106.17276422764417" stroke-width="1.9662939093165541" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M1.1368683772161603e-13,-5.684341886080802e-14 L43.05785332763048,-5.684341886080802e-14 L43.05785332763048,106.17276422764411 L1.1368683772161603e-13,106.17276422764411 L1.1368683772161603e-13,-5.684341886080802e-14 Z "/>
 
 	<path transform="matrix(1 0 0 1 494.33130081301084 241.62804878049002)" width="82.7317073170733" height="15.000000000000057" stroke-width="1.7593139971850265" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" d="M0,7.500000000000057 C0,3.3578639999999496 18.520121443902326,-5.684341886080802e-14 41.365853658536594,-5.684341886080802e-14 C64.21158587317075,-5.684341886080802e-14 82.7317073170733,3.3578639999999496 82.7317073170733,7.500000000000057 C82.7317073170733,11.64213600000005 64.21158587317075,15 41.365853658536594,15 C18.520121443902326,15 0,11.64213600000005 0,7.500000000000057 Z "/>
@@ -80,8 +198,10 @@
 
 	<path transform="matrix(1 0 0 1 823.2073170731722 54.66056910569107)" height="45" stroke-width="3" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M-1.1368683772161603e-13,0 L-1.1368683772161603e-13,45 "/>
 
-	<path transform="matrix(1 0 0 1 525.6168699186976 609.0000000000003)" width="23.999999999999886" height="45" stroke-width="1.1274095444137398" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.36" d="M0,-3.410605131648481e-13 L23.999999999999886,-3.410605131648481e-13 L23.999999999999886,44.99999999999966 L0,44.99999999999966 L0,-3.410605131648481e-13 Z "/>
-
+	<path id="showme"  transform="matrix(1 0 0 1 525.6168699186976 609.0000000000003)" width="23.999999999999886" height="45" stroke-width="1.1274095444137398" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.36" d="M0,-3.410605131648481e-13 L23.999999999999886,-3.410605131648481e-13 L23.999999999999886,44.99999999999966 L0,44.99999999999966 L0,-3.410605131648481e-13 Z "/>
+		<rect id="visiblerect2" width="22" height="44" x="526.5" y="610.5"
+				style="visibility: hidden;display=''" stroke="none"   fill="#CA36B3" />
+				
 	<g transform="matrix(6.123233995736766e-17 1 -1 6.123233995736766e-17 714.1095399930215 596.0467479674799)">
 		<g transform="matrix(1 0 0 1 -1.1368683772161603e-13 -1.1368683772161603e-13)">
 			<g>
@@ -410,8 +530,10 @@
 		</g>
 	</g>
 
-	<path transform="matrix(1 0 0 1 510.8831300813005 620.1565040650408)" width="53.57723577235788" height="18.752032520324974" stroke-width="2.720089642024847" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#E00606" d="M0,0 L53.57723577235788,0 L53.57723577235788,18.752032520324974 L0,18.752032520324974 L0,0 Z "/>
-
+	<path id="buttombutton" onclick="changeHeight()" 
+		transform="matrix(1 0 0 1 510.8831300813005 620.1565040650408)" width="53.57723577235788" height="18.752032520324974" stroke-width="2.720089642024847" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#809797" d="M0,0 L53.57723577235788,0 L53.57723577235788,18.752032520324974 L0,18.752032520324974 L0,0 Z "/>
+	<rect id="visiblerect" width="16" height="410" x="527.5" y="194.8"
+				style="visibility: hidden;display=''" stroke="none"   fill="#CA36B3" />
 </g>
 </svg>
 </div>

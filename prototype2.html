@@ -7,32 +7,50 @@
 	</title>
 	<link rel="icon" type="image/png" href="index-icon.png">
 	<meta name="description" content=""/>
-	<style type="text/css">body{ margin:0; background-color:rgba(255,255,255,1);}
+	<style type="text/css">
+	body{ 
+		margin:0; 
+		background-color:rgba(255,255,255,1);
+		width:100%;
+		height:100%;
+	}
+	 .ShapeDemo {
+            min-height: 200px;
+            width: 100%;
+        }
 	.page{ position:relative; }
 	</style>
 </head>
 <body>
-<script type="text/javascript">
+<script type="application/ecmascript">
+
 function changeCursor(el, cursor)
 {
 	el.style.cursor = cursor;
 }
+
+function reloadPage() {
+    location.reload();
+}
+
 	
 function changeDimensions() {
 
 		var showme = document.getElementById("visiblerect");
 		var current = document.getElementById('rect1').getBBox().height;
-		var current1 = document.getElementById('tapinrect').getBBox().height;
+		//var current1 = document.getElementById('tapinrect').getBBox().height;
 		var button2 = document.getElementById("buttombutton");
+		var button = document.getElementById("tapbutton");
 		
 		if(current>0 && current<=250)
 		{
 					changeCursor(button2, 'pointer');
 					button2.style.fill="#E00606";
+						
 		}
 	
 		
-		if(current>=100 && current1<91)
+		if(current>=99)
 		{   
 			showme.style.display = "";
 			if(showme.style.visibility == "hidden" ) {
@@ -45,6 +63,7 @@ function changeDimensions() {
 				console.log(current);
 				current = current - 10;
 				document.getElementById("rect1").setAttribute("height", current);
+				
 				//console.log(current);
 
 				
@@ -56,9 +75,9 @@ function changeDimensions() {
 				
 						
 				
-				console.log(current1);
-				current1 = current1 + 5.7;
-				document.getElementById("tapinrect").setAttribute("height", current1);
+				//console.log(current1);
+				//current1 = current1 + 6;
+				//document.getElementById("tapinrect").setAttribute("height", current1);
 				//console.log(current1);
 				
 		}
@@ -73,15 +92,25 @@ function changeDimensions() {
 			
 
 	}
-	function changeHeight() {
+
+function changeHeight() {
 
 		var showme = document.getElementById("visiblerect2");
 		var current = document.getElementById('rect1').getBBox().height;
 		var button2 = document.getElementById("buttombutton");
+		var button = document.getElementById("tapbutton");
+		//var current1 = document.getElementById('tapinrect').getBBox().height;
 		
+		/*if(current1>=5 && current1<96)
+		{
+					changeCursor(button, 'pointer');
+					button.style.fill="#E00606";
+		}
+	*/
 		if(current>0 && current<=240)
 		{   
-			
+			changeCursor(button, 'pointer');
+					button.style.fill="#E00606";
 		 	showme.style.display = "";
 			if(showme.style.visibility == "hidden" ) {
 				showme.style.visibility = "visible";
@@ -93,6 +122,10 @@ function changeDimensions() {
 				console.log(current);
 				current = current + 10;
 				document.getElementById("rect1").setAttribute("height", current);
+			//transformMe();
+				/*console.log(current1);
+				current1 = current1 - 6;
+				document.getElementById("tapinrect").setAttribute("height", current1);*/
 				
 		}
 		
@@ -103,8 +136,52 @@ function changeDimensions() {
 			button2.style.fill="#809797";
 		}
 		
-			
 }
+
+function changeChemicals(v,s){
+
+		document.getElementById("rect1").setAttribute("height", "250"); 
+		var button2 = document.getElementById("buttombutton");
+		var button = document.getElementById("tapbutton");
+		changeCursor(button, 'pointer');
+					button.style.fill="#E00606";
+					changeCursor(button2, 'default');
+			//showme.style.visibility = "hidden";
+			button2.style.fill="#809797";
+			
+		var col = document.getElementById("col");
+		document.getElementById("col").setAttribute("fill",v); 
+		document.getElementById("col").setAttribute("stroke",v); 
+		
+		document.getElementById('textname').textContent = s;
+		
+		document.getElementById("visiblerect").setAttribute("fill", v); 
+		document.getElementById("visiblerect2").setAttribute("fill",v);
+		
+		document.getElementById("round").setAttribute("fill", v); 
+		document.getElementById("tapcol1").setAttribute("fill", v); 
+		document.getElementById("tapcol2").setAttribute("fill", v); 
+		document.getElementById("tapcol3").setAttribute("fill", v); 
+
+	} 
+
+function changeLimit() {
+		
+		document.getElementById("tapinrect").setAttribute("height", 50);
+			changeCursor(buttonlm, 'default');
+			
+			buttonlm.style.fill="#809797";
+}
+
+function changeExcess() {
+		//var buttonlm = document.getElementById("limbutton");
+		var current1 = '20';
+		document.getElementById("tapinrect").setAttribute("height", current1);
+			changeCursor(buttonlm, 'default');
+			
+			buttonlm.style.fill="#809797";
+}
+	
 	function change(v){
 		//changeDimensions();
 		document.getElementById("tapinrect").setAttribute("height", "5"); 
@@ -115,36 +192,22 @@ function changeDimensions() {
 			button.style.fill="#6F0C0C";
 		document.getElementById("visiblerect").setAttribute("fill", v); 
 		document.getElementById("round").setAttribute("fill", v); 
-		document.getElementById("tapinrect1").setAttribute("fill", v); 
+		
 	} 
+	
 </script>
 
 <div class="page">
 <div class="svg-layer">
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="" pageAlignment="none" x="0px" y="0px" width="1366px" height="659px" viewBox="0 0 1366 659" enable-background="new 0 0 1366 659" xml:space="preserve">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="ShapeDemo" pageAlignment="none" x="0px" y="0px" viewBox="0 0 1300 659" enable-background="new 0 0 1300 659" xml:space="preserve">
 <defs xmlns=""/>
 <g xmlns="" type="LAYER" name="workspace" id="workspace" locked="true"/>
 <g xmlns="" id="Layer 01" type="LAYER" name="Layer 01">
-	<path id="borderrect" transform="matrix(1 0 0 1 10.81772357723547 5.357723577235916)" width="1339.8885772357721" height="650.9634146341466" stroke-width="2.9947474589647967" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.36" d="M-1.4210854715202004e-14,-2.842170943040401e-14 L1339.8885772357721,-2.842170943040401e-14 L1339.8885772357721,650.9634146341466 L-1.4210854715202004e-14,650.9634146341466 L-1.4210854715202004e-14,-2.842170943040401e-14 Z "/>
 
-	<path id="taprectbh" transform="matrix(1 0 0 1 508.6016260162617 13.585365853658573)" width="52" height="98.92682926829268" stroke-width="1.5456027648292485" stroke-miterlimit="3" stroke="#000000" fill="#FFFFFF" fill-opacity="0.5266666666666666" d="M2.2737367544323206e-13,-2.842170943040401e-14 L52.00000000000023,-2.842170943040401e-14 L52.00000000000023,98.92682926829265 L2.2737367544323206e-13,98.92682926829265 L2.2737367544323206e-13,-2.842170943040401e-14 Z "/>
+	<path id="borderrect" transform="matrix(1 0 0 1 10.81772357723547 5.357723577235916)" width="1200" height="640" stroke-width="2.9947474589647967" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.36" d="M-1.4210854715202004e-14,-2.842170943040401e-14 L1285,-2.842170943040401e-14 L1285,650.9634146341466 L-1.4210854715202004e-14,650.9634146341466 L-1.4210854715202004e-14,-2.842170943040401e-14 Z "/>
 
-	<path transform="matrix(1 0 0 1 507.85283246382886 113.38062765173275)" width="28.693179571678" height="15.111396475888483" stroke-width="1.233254162978478" stroke-miterlimit="3" stroke="#000000" fill="#FFFFFF" fill-opacity="0.5266666666666666" d="M0,0 L28.693179571678,15.111396475888483 "/>
-
-	<path transform="matrix(1 0 0 1 536.5460120355044 128.71356884306863)" width="24.735515780919854" fill-opacity="1" height="16.082653744408276" stroke-width="1.5727918722348495" stroke-miterlimit="3" stroke="#000000" fill="#FFFFFF" fill-opacity="0.5266666666666666" d="M-1.1368683772161603e-13,0 L24.73551578091974,-16.082653744408276 "/>
 	
-	<!-- <path id="taprectfr" transform="matrix(1 0 0 1 510.2288617886181 23.000000000000313)" width="48.19999999999993" height="89.78252032520322" stroke-width="0" stroke-miterlimit="3" stroke="#FFFFFF" stroke-opacity="0.07333333333333333" fill="#F51050" d="M-5.684341886080801e-13,1.4210854715202004e-14 L48.19999999999936,1.4210854715202004e-14 L48.19999999999936,89.78252032520324 L-5.684341886080801e-13,89.78252032520324 L-5.684341886080801e-13,1.4210854715202004e-14 Z "/>
-	-->
-	<rect  id="taprectfr" width="48.2" height="89.78252032520322" x="510.23" y="23" stroke="none" fill="#CA36B3"/>
-	
-	<rect id="tapinrect" width="48.2" height="5" x="510.23" y="17" stroke="none"   fill="white"/>
-	
-	<path transform="matrix(1 0 0 1 526.2396583699518 123.26015722189528)" width="18.056212199074707" height="70.95732245290156" stroke-width="0.8173176587362239" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" d="M1.1368683772161603e-13,8.526512829121202e-14 L18.05621219907482,8.526512829121202e-14 L18.05621219907482,70.95732245290165 L1.1368683772161603e-13,70.95732245290165 L1.1368683772161603e-13,8.526512829121202e-14 Z "/>
-
-	<path id="tapbutton" onmouseover="changeCursor(this,'pointer');" onmouseout="changeCursor(this,'default');" onclick="changeDimensions()"
-		transform="matrix(1 0 0 1 514.6373339836617 138.87601626016328)" width="42.146341463414615" height="39.024390243902474" stroke-width="3" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#E00606" d="M0,19.512195121951237 C0,8.735906341463423 9.434778848780484,0 21.073170731707307,0 C32.71156261463413,0 42.146341463414615,8.735906341463423 42.146341463414615,19.512195121951237 C42.146341463414615,30.28848390243905 32.71156261463413,39.024390243902474 21.073170731707307,39.024390243902474 C9.434778848780484,39.024390243902474 0,30.28848390243905 0,19.512195121951237 Z "/>
-
-	<path id="round" transform="matrix(1 0 0 1 411.37804878049366 359.3252032520355)" width="250" height="250" stroke-width="3" stroke-miterlimit="3" stroke="#000000" stroke-opacity="1" fill="#CA36B3" fill-opacity="1" d="M-1.1368683772161603e-13,124.99999999999977 C-1.1368683772161603e-13,55.96440000000007 55.96439999999984,0 125,0 C194.03559999999982,0 249.9999999999999,55.96440000000007 249.9999999999999,124.99999999999977 C249.9999999999999,194.03559999999982 194.03559999999982,250 125,250 C55.96439999999984,250 -1.1368683772161603e-13,194.03559999999982 -1.1368683772161603e-13,124.99999999999977 Z "/>
+	<path id="round" transform="matrix(1 0 0 1 411.37804878049366 359.3252032520355)" width="250.0" height="250.0" stroke-width="3" stroke-miterlimit="3" stroke="#000000" stroke-opacity="1" fill="#F800C7" fill-opacity="1" d="M-1.1368683772161603e-13,124.99999999999977 C-1.1368683772161603e-13,55.96440000000007 55.96439999999984,0 125,0 C194.03559999999982,0 249.9999999999999,55.96440000000007 249.9999999999999,124.99999999999977 C249.9999999999999,194.03559999999982 194.03559999999982,250 125,250 C55.96439999999984,250 -1.1368683772161603e-13,194.03559999999982 -1.1368683772161603e-13,124.99999999999977 Z "/>
 		<rect id="rect1" width="250" height="250" x="411.38" y="359.33"
 					style="stroke:none; position:fixed; bottom:0;" fill="white"/>
 		
@@ -158,7 +221,7 @@ function changeDimensions() {
 
 	<path transform="matrix(1 0 0 1 24.000000000000114 55.000000000000014)" width="279.4146341463415" height="48.39024390243904" stroke-width="3" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M0,0 L279.4146341463415,0 L279.4146341463415,48.39024390243904 L0,48.39024390243904 L0,0 Z "/>
 
-	<g transform="matrix(1 0 0 1 258.00000000000006 67.00000000000001)">
+	<g transform="matrix(1 0 0 1 258 67)">
 		<g>
 			<g>
 				<g>
@@ -172,11 +235,11 @@ function changeDimensions() {
 		</g>
 	</g>
 
-	<text type="textBox" transform="matrix(1 0 0 1 71.00000000000011 62.000000000000014)" width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
-	<tspan x="0" y="25">Chemicals</tspan>
+	<text  type="textBox"  transform="matrix(1 0 0 1 71.00000000000011 62.000000000000014)" width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
+	<tspan id="textname" x="0" y="25">Mn(2+)</tspan>
 	</text>
 
-	<path transform="matrix(1 0 0 1 38.000000000000114 67.00000000000001)" width="23.414634146341484" height="23.414634146341456" stroke-width="2" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M0,0 L23.414634146341484,0 L23.414634146341484,23.414634146341456 L0,23.414634146341456 L0,0 Z "/>
+	<path id="col" transform="matrix(1 0 0 1 38.000000000000114 67.00000000000001)" width="23.414634146341484" height="23.414634146341456" stroke-width="2" stroke-miterlimit="3" stroke="#F800C7" stroke-opacity="1" fill="#F800C7" fill-opacity="1" d="M0,0 L23.414634146341484,0 L23.414634146341484,23.414634146341456 L0,23.414634146341456 L0,0 Z "/>
 
 	<path transform="matrix(1 0 0 1 250.00000000000023 56.000000000000014)" height="45" stroke-width="3" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M-1.1368683772161603e-13,0 L-1.1368683772161603e-13,45 "/>
 
@@ -200,9 +263,9 @@ function changeDimensions() {
 
 	<path id="showme"  transform="matrix(1 0 0 1 525.6168699186976 609.0000000000003)" width="23.999999999999886" height="45" stroke-width="1.1274095444137398" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.36" d="M0,-3.410605131648481e-13 L23.999999999999886,-3.410605131648481e-13 L23.999999999999886,44.99999999999966 L0,44.99999999999966 L0,-3.410605131648481e-13 Z "/>
 		<rect id="visiblerect2" width="22" height="44" x="526.5" y="610.5"
-				style="visibility: hidden;display=''" stroke="none"   fill="#CA36B3" />
+				style="visibility: hidden;display=''" stroke="none"   fill="#F800C7" />
 				
-	<g transform="matrix(6.123233995736766e-17 1 -1 6.123233995736766e-17 714.1095399930215 596.0467479674799)">
+	<g id="volumeid"  transform="matrix(6.123233995736766e-17 1 -1 6.123233995736766e-17 714.109 596.046)">
 		<g transform="matrix(1 0 0 1 -1.1368683772161603e-13 -1.1368683772161603e-13)">
 			<g>
 				<g>
@@ -216,7 +279,6 @@ function changeDimensions() {
 		</g>
 	</g>
 
-	<path transform="matrix(1 0 0 1 467.54147881736503 802.8830024174919)" width="88.94632606068387" height="2.8830024174918663" stroke-miterlimit="3" stroke="none" fill="#000" d="M0,0 L88.94632606068387,-2.8830024174918663 "/>
 
 	<path transform="matrix(1 0 0 1 691.4146341463412 609.4638275750857)" width="20.000000000000114" height="0.19756741248352228" stroke-width="1.632993161855452" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.9933333333333333" fill="#FFFFFF" fill-opacity="0.04" d="M0,-2.2737367544323206e-13 L-20.000000000000114,-2.2737367544323206e-13 L-20.000000000000114,-0.19756741248374965 L0,-0.19756741248374965 L0,-2.2737367544323206e-13 Z "/>
 
@@ -225,7 +287,7 @@ function changeDimensions() {
 	<path transform="matrix(1 0 0 1 680.8937462250356 359.6005002923506)" width="0.1999999999998181" height="249.99999999999994" stroke-width="2.0122090981587992" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.9933333333333333" fill="#FFFFFF" fill-opacity="0.04" d="M0,-1.1368683772161603e-13 L0.1999999999998181,249.99999999999983 "/>
 
 	<text type="textBox" transform="matrix(1 0 0 1 727.5711382113825 598.9817073170763)" width="113.95121951219515" height="25" stroke-width="3.0093119224978935" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="22" text-align="left" text-anchor="start">
-	<tspan x="0" y="22">0.00 L</tspan>
+	<tspan x="0" y="22">0.00 ml</tspan>
 	</text>
 
 	<text type="textBox" transform="matrix(1 0 0 1 641.0838815847758 285.4559288152551)" width="113.17073170732125" height="62" stroke-width="3.0093119224978935" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="27" text-align="left" text-anchor="start">
@@ -236,33 +298,33 @@ function changeDimensions() {
 	<tspan x="0" y="24">HCl</tspan>
 	</text>
 
-	<g transform="matrix(-1.8369701987210297e-16 -1 1 -1.8369701987210297e-16 1215.1779453255133 636.52140767723)">
-		<g transform="matrix(1 0 0 1 0 -2.2737367544323206e-13)">
+	<g id="phmove" transform="matrix(6.123233995736766e-17 1 -1 6.123233995736766e-17 1208 610)">
+		<g transform="matrix(1 0 0 1 0 -2.27)">
 			<g>
 				<g>
 					<g>
-						<path transform="matrix(1 0 0 1 0 1.5609756097562695)" width="13.540175383330393" height="23.414634146341314" stroke-width="1.7004092502439905" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#0A0909" d="M0,0 L13.540175383330393,23.414634146341314 "/>
-						<path transform="matrix(1 0 0 1 13.540175383330393 24.975609756097583)" width="13.540175383330393" height="24.97560975609781" stroke-width="1.7004092502439905" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#0A0909" d="M0,0 L13.540175383330393,-24.97560975609781 "/>
-						<path transform="matrix(1 0 0 1 0 0.5000000000002274)" width="27.080350766660672" height="0.5000000000002274" stroke-width="1.7004092502439905" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#0A0909" d="M0,0 L27.080350766660672,-0.5000000000002274 "/>
+						<path transform="matrix(1 0 0 1 0 1.5609756097561558)" width="13.475492945883275" height="23.414634146341314" stroke-width="1.6963428965922052" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#0A0909" d="M0,2.2737367544323206e-13 L13.475492945883275,23.41463414634154 "/>
+						<path transform="matrix(1 0 0 1 13.475492945883275 24.975609756097583)" width="13.475492945883389" height="24.975609756097697" stroke-width="1.6963428965922052" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#0A0909" d="M1.1368683772161603e-13,2.2737367544323206e-13 L13.475492945883502,-24.97560975609747 "/>
+						<path transform="matrix(1 0 0 1 0 0.5000000000001137)" width="26.950985891766663" height="0.5000000000001137" stroke-width="1.6963428965922052" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#0A0909" d="M0,0 L26.950985891766663,-0.5000000000001137 "/>
 					</g>
 				</g>
 			</g>
 		</g>
 	</g>
 
-	<text type="textBox" transform="matrix(1 0 0 1 1236.0516625100884 30.150406504065316)" width="157.72252109618017" height="38" stroke-width="3.0093119224978935" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="20" text-align="left" text-anchor="start">
+	<text type="textBox" transform="matrix(1 0 0 1 1095.0516625100884 30.150406504065316)" width="157.72252109618017" height="38" stroke-width="3.0093119224978935" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="20" text-align="left" text-anchor="start">
 	<tspan x="0" y="16">PH Scaler</tspan>
 	</text>
 
 	<text type="textBox" transform="matrix(1 0 0 1 70 20)" width="279.0243902439041" height="38" stroke-width="3.0093119224978935" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="20" text-align="left" text-anchor="start">
-	<tspan x="0" y="16">Complex Aqueous</tspan>
+	<tspan x="0" y="16">Aqua Complexes</tspan>
 	</text>
 
 	<text type="textBox" transform="matrix(1 0 0 1 720 20)" width="202.73170731707376" height="38" stroke-width="3.0093119224978935" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="20" text-align="left" text-anchor="start">
 	<tspan x="0" y="16">Acid/Base</tspan>
 	</text>
 
-	<g transform="matrix(1 0 0 1 1243 67.67886178861802)">
+	<g transform="matrix(1 0 0 1 1100 67.67886178861802)">
 		<g>
 			<g>
 				<path width="80" height="40" stroke-width="2.7794214908015293" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M0,0 L80,0 L80,40 L0,40 L0,0 Z "/>
@@ -274,7 +336,7 @@ function changeDimensions() {
 		</g>
 	</g>
 
-	<g transform="matrix(1 0 0 1 1243 106.88821138211468)">
+	<g transform="matrix(1 0 0 1 1100 106.88821138211468)">
 		<g>
 			<g>
 				<path width="80" height="40.00000000000014" stroke-width="2.7794214908015347" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M0,0 L80,0 L80,40.00000000000014 L0,40.00000000000014 L0,0 Z "/>
@@ -285,7 +347,7 @@ function changeDimensions() {
 		</g>
 	</g>
 
-	<g transform="matrix(1 0 0 1 1243 145.73170731707506)">
+	<g transform="matrix(1 0 0 1 1100 145.73170731707506)">
 		<g>
 			<g>
 				<path width="80" height="40.00000000000014" stroke-width="2.7794214908015347" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M0,0 L80,0 L80,40.00000000000014 L0,40.00000000000014 L0,0 Z "/>
@@ -296,7 +358,7 @@ function changeDimensions() {
 		</g>
 	</g>
 
-	<g transform="matrix(1 0 0 1 1243 185.9146341463437)">
+	<g transform="matrix(1 0 0 1 1100 185.9146341463437)">
 		<g>
 			<g>
 				<<path width="80" height="40.00000000000014" stroke-width="2.7794214908015347" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M0,0 L80,0 L80,40.00000000000014 L0,40.00000000000014 L0,0 Z "/>
@@ -307,7 +369,7 @@ function changeDimensions() {
 		</g>
 	</g>
 
-	<g transform="matrix(1 0 0 1 1243 226.0975609756129)">
+	<g transform="matrix(1 0 0 1 1100 226.0975609756129)">
 		<g transform="matrix(1 0 0 1 0 -5.684341886080802e-14)">
 			<g>
 				<path width="80" height="40.00000000000014" stroke-width="2.7794214908015347" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M0,0 L80,0 L80,40.00000000000014 L0,40.00000000000014 L0,0 Z "/>
@@ -318,7 +380,7 @@ function changeDimensions() {
 		</g>
 	</g>
 
-	<g transform="matrix(1 0 0 1 1243 266.28048780488047)">
+	<g transform="matrix(1 0 0 1 1100 266.28048780488047)">
 		<g transform="matrix(1 0 0 1 0 -5.684341886080802e-14)">
 			<g>
 			<path width="80" height="40.00000000000014" stroke-width="2.7794214908015347" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M0,0 L80,0 L80,40.00000000000014 L0,40.00000000000014 L0,0 Z "/>
@@ -330,7 +392,7 @@ function changeDimensions() {
 	</g>
 
 
-	<g transform="matrix(1 0 0 1 1243 306.46341463414853)">
+	<g transform="matrix(1 0 0 1 1100 306.46341463414853)">
 		<g transform="matrix(1 0 0 1 0 -5.684341886080802e-14)">
 			<g>
 				<path width="80" height="40.00000000000014" stroke-width="2.7794214908015347" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M0,0 L80,0 L80,40.00000000000014 L0,40.00000000000014 L0,0 Z "/>
@@ -341,7 +403,7 @@ function changeDimensions() {
 		</g>
 	</g>
 
-	<g transform="matrix(1 0 0 1 1243 346.64634146341604)">
+	<g transform="matrix(1 0 0 1 1100 346.64634146341604)">
 		<g transform="matrix(1 0 0 1 0 -5.684341886080802e-14)">
 			<g>
 				<path width="80" height="40.00000000000014" stroke-width="2.7794214908015347" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M0,0 L80,0 L80,40.00000000000014 L0,40.00000000000014 L0,0 Z "/>
@@ -352,7 +414,7 @@ function changeDimensions() {
 		</g>
 	</g>
 
-	<g transform="matrix(1 0 0 1 1243 386.8292682926833)">
+	<g transform="matrix(1 0 0 1 1100 386.8292682926833)">
 		<g transform="matrix(1 0 0 1 0 -5.684341886080802e-14)">
 			<g>
 				<path width="80" height="40.00000000000014" stroke-width="2.7794214908015347" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M0,0 L80,0 L80,40.00000000000014 L0,40.00000000000014 L0,0 Z "/>
@@ -363,7 +425,7 @@ function changeDimensions() {
 		</g>
 	</g>
 
-	<g transform="matrix(1 0 0 1 1243 425.67276422764235)">
+	<g transform="matrix(1 0 0 1 1100 425.67276422764235)">
 		<g transform="matrix(1 0 0 1 0 -1.1368683772161603e-13)">
 			<g>
 				<path width="80" height="40.00000000000014" stroke-width="2.7794214908015347" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M0,0 L80,0 L80,40.00000000000014 L0,40.00000000000014 L0,0 Z "/>
@@ -374,7 +436,7 @@ function changeDimensions() {
 		</g>
 	</g>
 
-	<g transform="matrix(1 0 0 1 1243 464.5162601626031)">
+	<g transform="matrix(1 0 0 1 1100 464.5162601626031)">
 		<g transform="matrix(1 0 0 1 0 -1.7053025658242404e-13)">
 			<g>
 				<path width="80" height="40.00000000000014" stroke-width="2.7794214908015347" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M0,0 L80,0 L80,40.00000000000014 L0,40.00000000000014 L0,0 Z "/>
@@ -385,7 +447,7 @@ function changeDimensions() {
 		</g>
 	</g>
 
-	<g transform="matrix(1 0 0 1 1243 504.69918699187383)">
+	<g transform="matrix(1 0 0 1 1100 504.69918699187383)">
 		<g>
 			<g>
 				<path width="80" height="40.00000000000014" stroke-width="2.7794214908015347" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M0,0 L80,0 L80,40.00000000000014 L0,40.00000000000014 L0,0 Z "/>
@@ -396,7 +458,7 @@ function changeDimensions() {
 		</g>
 	</g>
 
-	<g transform="matrix(1 0 0 1 1243 543.5426829268347)">
+	<g transform="matrix(1 0 0 1 1100 543.5426829268347)">
 		<g transform="matrix(1 0 0 1 0 -1.1368683772161603e-13)">
 			<g>
 				<path width="80" height="40.00000000000014" stroke-width="2.7794214908015347" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M0,0 L80,0 L80,40.00000000000014 L0,40.00000000000014 L0,0 Z "/>
@@ -407,7 +469,7 @@ function changeDimensions() {
 		</g>
 	</g>
 
-	<g transform="matrix(1 0 0 1 1243 583.7256097561004)">
+	<g transform="matrix(1 0 0 1 1100 583.7256097561004)">
 		<g>
 			<g>
 				<path width="80" height="40.00000000000014" stroke-width="2.7794214908015347" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M0,0 L80,0 L80,40.00000000000014 L0,40.00000000000014 L0,0 Z "/>
@@ -418,17 +480,18 @@ function changeDimensions() {
 		</g>
 	</g>
 
-	<text type="textBox" transform="matrix(1 0 0 1 1150 608)" width="113.95121951219515" height="25" stroke-width="3.0093119224978935" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="22" text-align="left" text-anchor="start">
+	<text type="textBox" transform="matrix(1 0 0 1 1220 608)" width="113.95121951219515" height="25" stroke-width="3.0093119224978935" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="22" text-align="left" text-anchor="start">
 	<tspan x="0" y="22">0.00</tspan>
 	</text>
 
-	<path transform="matrix(1 0 0 1 906.9999999999999 64.29268292682933)" width="45.54065040650414" height="44.20121951219511" stroke-width="4" stroke-miterlimit="3" stroke="#575454" stroke-opacity="0.98" fill="#E2D9D9" d="M0,22.100609756097555 C0,9.894778917073168 10.19462070243904,0 22.77032520325207,0 C35.3460297040651,0 45.54065040650414,9.894778917073168 45.54065040650414,22.100609756097555 C45.54065040650414,34.30644059512194 35.3460297040651,44.20121951219511 22.77032520325207,44.20121951219511 C10.19462070243904,44.20121951219511 0,34.30644059512194 0,22.100609756097555 Z "/>
+	<path  id="limbutton" onclick="changelimit()" 
+		transform="matrix(1 0 0 1 906.9999999999999 64.29268292682933)" width="45.54065040650414" height="44.20121951219511" stroke-width="4" stroke-miterlimit="3" stroke="#575454" stroke-opacity="0.98" fill="#E2D9D9" d="M0,22.100609756097555 C0,9.894778917073168 10.19462070243904,0 22.77032520325207,0 C35.3460297040651,0 45.54065040650414,9.894778917073168 45.54065040650414,22.100609756097555 C45.54065040650414,34.30644059512194 35.3460297040651,44.20121951219511 22.77032520325207,44.20121951219511 C10.19462070243904,44.20121951219511 0,34.30644059512194 0,22.100609756097555 Z "/>
 
 	<text type="textBox" transform="matrix(1 0 0 1 970.0000000000001 69.205284552847)" width="113.95121951219515" height="25" stroke-width="3.0093119224978935" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
 	<tspan x="0" y="22">Limited</tspan>
 	</text>
 
-	<path transform="matrix(1 0 0 1 906.9999999999999 127.91565040650504)" width="45.54065040650414" height="44.20121951219511" stroke-width="4" stroke-miterlimit="3" stroke="#575454" stroke-opacity="0.98" fill="#E2D9D9" d="M0,22.100609756097555 C0,9.894778917073168 10.19462070243904,0 22.77032520325207,0 C35.3460297040651,0 45.54065040650414,9.894778917073168 45.54065040650414,22.100609756097555 C45.54065040650414,34.30644059512194 35.3460297040651,44.20121951219511 22.77032520325207,44.20121951219511 C10.19462070243904,44.20121951219511 0,34.30644059512194 0,22.100609756097555 Z "/>
+	<path id="exebutton" onclick="changeExcess()" transform="matrix(1 0 0 1 906.9999999999999 127.91565040650504)" width="45.54065040650414" height="44.20121951219511" stroke-width="4" stroke-miterlimit="3" stroke="#575454" stroke-opacity="0.98" fill="#E2D9D9" d="M0,22.100609756097555 C0,9.894778917073168 10.19462070243904,0 22.77032520325207,0 C35.3460297040651,0 45.54065040650414,9.894778917073168 45.54065040650414,22.100609756097555 C45.54065040650414,34.30644059512194 35.3460297040651,44.20121951219511 22.77032520325207,44.20121951219511 C10.19462070243904,44.20121951219511 0,34.30644059512194 0,22.100609756097555 Z "/>
 
 	<text type="textBox" transform="matrix(1 0 0 1 970.0000000000001 136.17682926829372)" width="113.95121951219515" height="25" stroke-width="3.0093119224978935" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
 	<tspan x="0" y="22">Excess</tspan>
@@ -450,15 +513,19 @@ function changeDimensions() {
 		<path width="280.00000000000006" height="491.70731707317077" stroke-width="2" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M0,0 L280.00000000000006,0 L280.00000000000006,491.70731707317077 L0,491.70731707317077 L0,0 Z "/>
 
 		<g transform="matrix(1 0 0 1 13.804878048780537 7.902439024390702)">
-			<path transform="matrix(1 0 0 1 -2.7000623958883807e-13 4.999999999999886)" width="24.020016680566926" height="23.414634146341427" stroke-width="2.025689886498808" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M2.8421709430404007e-13,8.526512829121202e-14 L24.02001668056721,8.526512829121202e-14 L24.02001668056721,23.414634146341513 L2.8421709430404007e-13,23.414634146341513 L2.8421709430404007e-13,8.526512829121202e-14 Z "/>
-
-			<text type="textBox" transform="matrix(1 0 0 1 33.85321100917436 0)" width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
+			<path  transform="matrix(1 0 0 1 -2.7000623958883807e-13 4.999999999999886)" 
+			id="col1" onclick="changeChemicals('#01DFA5','Ni(2+)')" cursor="pointer"
+			width="24.020016680566926" height="23.414634146341427" stroke-width="2.025689886498808" stroke-miterlimit="3" stroke="#01DFA5" stroke-opacity="0.98" fill="#01DFA5" fill-opacity="1" d="M2.8421709430404007e-13,8.526512829121202e-14 L24.02001668056721,8.526512829121202e-14 L24.02001668056721,23.414634146341513 L2.8421709430404007e-13,23.414634146341513 L2.8421709430404007e-13,8.526512829121202e-14 Z "/>
+			
+			<text type="textBox"  transform="matrix(1 0 0 1 33.85321100917436 0)" width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
 			<tspan x="0" y="25">Ni(2+)</tspan>
 			</text>
 		</g>
 
 		<g transform="matrix(1 0 0 1 13.804878048780878 48.53658536585398)">
-			<path transform="matrix(1 0 0 1 -2.7000623958883807e-13 4.999999999999886)" width="24.020016680566926" height="23.414634146341427" stroke-width="2.025689886498808" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M2.8421709430404007e-13,8.526512829121202e-14 L24.02001668056721,8.526512829121202e-14 L24.02001668056721,23.414634146341513 L2.8421709430404007e-13,23.414634146341513 L2.8421709430404007e-13,8.526512829121202e-14 Z "/>
+			<path transform="matrix(1 0 0 1 -2.7000623958883807e-13 4.999999999999886)" 
+			id="col2" onclick="changeChemicals('#00BFFF','Cu(2+)')" cursor="pointer"
+			width="24.020016680566926" height="23.414634146341427" stroke-width="2.025689886498808" stroke-miterlimit="3" stroke="#00BFFF" stroke-opacity="0.98" fill="#00BFFF" fill-opacity="1" d="M2.8421709430404007e-13,8.526512829121202e-14 L24.02001668056721,8.526512829121202e-14 L24.02001668056721,23.414634146341513 L2.8421709430404007e-13,23.414634146341513 L2.8421709430404007e-13,8.526512829121202e-14 Z "/>
 
 			<text type="textBox" transform="matrix(1 0 0 1 33.85321100917436 0)" width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
 			<tspan x="0" y="25">Cu(2+)</tspan>
@@ -466,7 +533,9 @@ function changeDimensions() {
 		</g>
 
 		<g transform="matrix(1 0 0 1 13.804878048780708 96.97560975609794)">
-			<path transform="matrix(1 0 0 1 -2.7000623958883807e-13 4.999999999999886)" width="24.020016680566926" height="23.414634146341427" stroke-width="2.025689886498808" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M2.8421709430404007e-13,8.526512829121202e-14 L24.02001668056721,8.526512829121202e-14 L24.02001668056721,23.414634146341513 L2.8421709430404007e-13,23.414634146341513 L2.8421709430404007e-13,8.526512829121202e-14 Z "/>
+			<path transform="matrix(1 0 0 1 -2.7000623958883807e-13 4.999999999999886)" 
+			id="col3" onclick="changeChemicals('#E6E6E6','Zn(2+)')" cursor="pointer"
+			width="24.020016680566926" height="23.414634146341427" stroke-width="2.025689886498808" stroke-miterlimit="3" stroke="#E6E6E6" stroke-opacity="0.98" fill="#E6E6E6" fill-opacity="1" d="M2.8421709430404007e-13,8.526512829121202e-14 L24.02001668056721,8.526512829121202e-14 L24.02001668056721,23.414634146341513 L2.8421709430404007e-13,23.414634146341513 L2.8421709430404007e-13,8.526512829121202e-14 Z "/>
 
 			<text type="textBox" transform="matrix(1 0 0 1 33.85321100917436 0)" width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
 			<tspan x="0" y="25">Zn(2+)</tspan>
@@ -474,7 +543,9 @@ function changeDimensions() {
 		</g>
 
 		<g transform="matrix(1 0 0 1 13.804878048780708 146.97560975609792)">
-			<path transform="matrix(1 0 0 1 -2.7000623958883807e-13 4.999999999999886)" width="24.020016680566926" height="23.414634146341427" stroke-width="2.025689886498808" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M2.8421709430404007e-13,8.526512829121202e-14 L24.02001668056721,8.526512829121202e-14 L24.02001668056721,23.414634146341513 L2.8421709430404007e-13,23.414634146341513 L2.8421709430404007e-13,8.526512829121202e-14 Z "/>
+			<path transform="matrix(1 0 0 1 -2.7000623958883807e-13 4.999999999999886)" 
+			id="col4" onclick="changeChemicals('#F7819F','Co(2+)')" cursor="pointer"
+			width="24.020016680566926" height="23.414634146341427" stroke-width="2.025689886498808" stroke-miterlimit="3" stroke="#F7819F" stroke-opacity="0.98" fill="#F7819F" fill-opacity="1" d="M2.8421709430404007e-13,8.526512829121202e-14 L24.02001668056721,8.526512829121202e-14 L24.02001668056721,23.414634146341513 L2.8421709430404007e-13,23.414634146341513 L2.8421709430404007e-13,8.526512829121202e-14 Z "/>
 
 			<text type="textBox" transform="matrix(1 0 0 1 33.85321100917436 0)" width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
 			<tspan x="0" y="25">Co(2+)</tspan>
@@ -482,15 +553,19 @@ function changeDimensions() {
 		</g>
 
 		<g transform="matrix(1 0 0 1 13.804878048780708 196.97560975609792)">
-			<path transform="matrix(1 0 0 1 -2.7000623958883807e-13 4.999999999999886)" width="24.020016680566926" height="23.414634146341427" stroke-width="2.025689886498808" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M2.8421709430404007e-13,8.526512829121202e-14 L24.02001668056721,8.526512829121202e-14 L24.02001668056721,23.414634146341513 L2.8421709430404007e-13,23.414634146341513 L2.8421709430404007e-13,8.526512829121202e-14 Z "/>
+			<path transform="matrix(1 0 0 1 -2.7000623958883807e-13 4.999999999999886)" 
+			id="col5" onclick="changeChemicals('#B404AE','Ti(3+)')" cursor="pointer"
+			width="24.020016680566926" height="23.414634146341427" stroke-width="2.025689886498808" stroke-miterlimit="3" stroke="#B404AE" stroke-opacity="0.98" fill="#B404AE" fill-opacity="1" d="M2.8421709430404007e-13,8.526512829121202e-14 L24.02001668056721,8.526512829121202e-14 L24.02001668056721,23.414634146341513 L2.8421709430404007e-13,23.414634146341513 L2.8421709430404007e-13,8.526512829121202e-14 Z "/>
 
 			<text type="textBox" transform="matrix(1 0 0 1 33.85321100917436 0)" width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
-			<tspan x="0" y="25">Co(3+)</tspan>
+			<tspan x="0" y="25">Ti(3+)</tspan>
 			</text>
 		</g>
 
 		<g transform="matrix(1 0 0 1 13.804878048780708 246.97560975609792)">
-			<path transform="matrix(1 0 0 1 -2.7000623958883807e-13 4.999999999999886)" width="24.020016680566926" height="23.414634146341427" stroke-width="2.025689886498808" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M2.8421709430404007e-13,8.526512829121202e-14 L24.02001668056721,8.526512829121202e-14 L24.02001668056721,23.414634146341513 L2.8421709430404007e-13,23.414634146341513 L2.8421709430404007e-13,8.526512829121202e-14 Z "/>
+			<path transform="matrix(1 0 0 1 -2.7000623958883807e-13 4.999999999999886)" 
+			id="col6" onclick="changeChemicals('#A9F5A9','Fe(2+)')" cursor="pointer"
+			width="24.020016680566926" height="23.414634146341427" stroke-width="2.025689886498808" stroke-miterlimit="3" stroke="#A9F5A9" stroke-opacity="0.98" fill="#A9F5A9" fill-opacity="1" d="M2.8421709430404007e-13,8.526512829121202e-14 L24.02001668056721,8.526512829121202e-14 L24.02001668056721,23.414634146341513 L2.8421709430404007e-13,23.414634146341513 L2.8421709430404007e-13,8.526512829121202e-14 Z "/>
 
 			<text type="textBox" transform="matrix(1 0 0 1 33.85321100917436 0)" width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
 			<tspan x="0" y="25">Fe(2+)</tspan>
@@ -498,7 +573,9 @@ function changeDimensions() {
 		</g>
 
 		<g transform="matrix(1 0 0 1 13.804878048780708 296.9756097560979)">
-			<path transform="matrix(1 0 0 1 -2.7000623958883807e-13 4.999999999999886)" width="24.020016680566926" height="23.414634146341427" stroke-width="2.025689886498808" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M2.8421709430404007e-13,8.526512829121202e-14 L24.02001668056721,8.526512829121202e-14 L24.02001668056721,23.414634146341513 L2.8421709430404007e-13,23.414634146341513 L2.8421709430404007e-13,8.526512829121202e-14 Z "/>
+			<path transform="matrix(1 0 0 1 -2.7000623958883807e-13 4.999999999999886)" 
+			id="col7" onclick="changeChemicals('#F7D358','Fe(3+)')" cursor="pointer"
+			width="24.020016680566926" height="23.414634146341427" stroke-width="2.025689886498808" stroke-miterlimit="3" stroke="#F7D358" stroke-opacity="0.98" fill="#F7D358" fill-opacity="1" d="M2.8421709430404007e-13,8.526512829121202e-14 L24.02001668056721,8.526512829121202e-14 L24.02001668056721,23.414634146341513 L2.8421709430404007e-13,23.414634146341513 L2.8421709430404007e-13,8.526512829121202e-14 Z "/>
 
 			<text type="textBox" transform="matrix(1 0 0 1 33.85321100917436 0)" width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
 			<tspan x="0" y="25">Fe(3+)</tspan>
@@ -506,37 +583,80 @@ function changeDimensions() {
 		</g>
 
 		<g transform="matrix(1 0 0 1 13.804878048780708 346.97560975609804)">
-			<path transform="matrix(1 0 0 1 -2.7000623958883807e-13 4.999999999999886)" width="24.020016680566926" height="23.414634146341427" stroke-width="2.025689886498808" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M2.8421709430404007e-13,8.526512829121202e-14 L24.02001668056721,8.526512829121202e-14 L24.02001668056721,23.414634146341513 L2.8421709430404007e-13,23.414634146341513 L2.8421709430404007e-13,8.526512829121202e-14 Z "/>
+			<path transform="matrix(1 0 0 1 -2.7000623958883807e-13 4.999999999999886)" 
+			id="col8" onclick="changeChemicals('#3B0B39','V(2+)')" cursor="pointer"
+			width="24.020016680566926" height="23.414634146341427" stroke-width="2.025689886498808" stroke-miterlimit="3" stroke="#3B0B39" stroke-opacity="0.98" fill="#3B0B39" fill-opacity="1" d="M2.8421709430404007e-13,8.526512829121202e-14 L24.02001668056721,8.526512829121202e-14 L24.02001668056721,23.414634146341513 L2.8421709430404007e-13,23.414634146341513 L2.8421709430404007e-13,8.526512829121202e-14 Z "/>
 
 			<text type="textBox" transform="matrix(1 0 0 1 33.85321100917436 0)" width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
-			<tspan x="0" y="25">Mn(2+)</tspan>
+			<tspan x="0" y="25">V(2+)</tspan>
 			</text>
 		</g>
 
 		<g transform="matrix(1 0 0 1 13.804878048780537 396.97560975609804)">
-			<path transform="matrix(1 0 0 1 -2.7000623958883807e-13 4.999999999999886)" width="24.020016680566926" height="23.414634146341427" stroke-width="2.025689886498808" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M2.8421709430404007e-13,8.526512829121202e-14 L24.02001668056721,8.526512829121202e-14 L24.02001668056721,23.414634146341513 L2.8421709430404007e-13,23.414634146341513 L2.8421709430404007e-13,8.526512829121202e-14 Z "/>
+			<path transform="matrix(1 0 0 1 -2.7000623958883807e-13 4.999999999999886)" 
+			id="col9" onclick="changeChemicals('#BE81F7','Cr(3+)')" cursor="pointer"
+			width="24.020016680566926" height="23.414634146341427" stroke-width="2.025689886498808" stroke-miterlimit="3" stroke="#BE81F7" stroke-opacity="0.98" fill="#BE81F7" fill-opacity="1" d="M2.8421709430404007e-13,8.526512829121202e-14 L24.02001668056721,8.526512829121202e-14 L24.02001668056721,23.414634146341513 L2.8421709430404007e-13,23.414634146341513 L2.8421709430404007e-13,8.526512829121202e-14 Z "/>
 
 			<text type="textBox" transform="matrix(1 0 0 1 33.85321100917436 0)" width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
-			<tspan x="0" y="25">Cr(2+)</tspan>
+			<tspan x="0" y="25">Cr(3+)</tspan>
 			</text>
 		</g>
 
 		<g transform="matrix(1 0 0 1 13.804878048780708 446.9756097560979)">
-			<path transform="matrix(1 0 0 1 -2.7000623958883807e-13 4.999999999999886)" width="24.020016680566926" height="23.414634146341427" stroke-width="2.025689886498808" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M2.8421709430404007e-13,8.526512829121202e-14 L24.02001668056721,8.526512829121202e-14 L24.02001668056721,23.414634146341513 L2.8421709430404007e-13,23.414634146341513 L2.8421709430404007e-13,8.526512829121202e-14 Z "/>
+			<path  
+			id="col3" onclick="changeChemicals('F800C7','Mn(2+)')" cursor="pointer"
+			transform="matrix(1 0 0 1 -2.7000623958883807e-13 4.999999999999886)" width="24.020016680566926" height="23.414634146341427" stroke-width="2.025689886498808" stroke-miterlimit="3" stroke="#F800C7" stroke-opacity="0.98" fill="#F800C7" fill-opacity="1" d="M2.8421709430404007e-13,8.526512829121202e-14 L24.02001668056721,8.526512829121202e-14 L24.02001668056721,23.414634146341513 L2.8421709430404007e-13,23.414634146341513 L2.8421709430404007e-13,8.526512829121202e-14 Z "/>
 
 			<text type="textBox" transform="matrix(1 0 0 1 33.85321100917436 0)" width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
-			<tspan x="0" y="25">Ti(3+)</tspan>
+			<tspan x="0" y="25">Mn(2+)</tspan>
 			</text>
 		</g>
 	</g>
 
 	<path id="buttombutton" onclick="changeHeight()" 
 		transform="matrix(1 0 0 1 510.8831300813005 620.1565040650408)" width="53.57723577235788" height="18.752032520324974" stroke-width="2.720089642024847" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#809797" d="M0,0 L53.57723577235788,0 L53.57723577235788,18.752032520324974 L0,18.752032520324974 L0,0 Z "/>
-	<rect id="visiblerect" width="16" height="410" x="527.5" y="194.8"
-				style="visibility: hidden;display=''" stroke="none"   fill="#CA36B3" />
+	<rect id="visiblerect" width="15.5" height="402" x="526.86" y="198.54"
+				style="visibility: hidden;display=''" stroke="none"   fill="#F800C7" />
+				
+	
+	
+	
+	
+	<path transform="matrix(1 0 0 1 904.6758130081301 513.0020325203252)" width="58.93495934959378" height="55.58638211382936" stroke-width="14.384935862446678" stroke-miterlimit="3" stroke="#FFA300" stroke-opacity="0.98" fill="#FFFFFF" d="M-2.2737367544323206e-13,27.793191056914452 C-2.2737367544323206e-13,12.44343409268447 13.193038556097235,-3.410605131648481e-13 29.467479674796778,-3.410605131648481e-13 C45.741920793495865,-3.410605131648481e-13 58.934959349593555,12.44343409268447 58.934959349593555,27.793191056914452 C58.934959349593555,43.14294802114432 45.741920793495865,55.58638211382902 29.467479674796778,55.58638211382902 C13.193038556097235,55.58638211382902 -2.2737367544323206e-13,43.14294802114432 -2.2737367544323206e-13,27.793191056914452 Z "/>
+	
+	<path transform="matrix(0.9396926207859083 -0.34202014332566877 0.34202014332566877 0.9396926207859083 948.2573900959684 516.976570407513)" width="9.376016260162942" height="23" stroke-width="13.999999999999998" stroke-linecap="round" stroke-miterlimit="3" stroke="#FFA300" fill="#575454" fill-opacity="0.98" d="M0,-1.1368683772161603e-13 L-9.376016260162942,22.999999999999886 "/>
+
+	<path transform="matrix(0.8660254037844386 -0.5000000000000001 0.5000000000000001 0.8660254037844386 948.5950889202444 514.2639298322335)" width="17.41260162601634" height="22.770325203250195" stroke-width="14" stroke-linecap="round" stroke-miterlimit="3" stroke="#FFA300" fill="#575454" fill-opacity="0.98" d="M0,0 L17.41260162601634,22.770325203250195 "/><path transform="matrix(0.992546151641322 0.12186934340514752 -0.12186934340514752 0.992546151641322 942.3522582219476 492.208675579263)" width="15.173061747986822" height="37.78308117488717" stroke-width="7.1503117589976855" stroke-linecap="round" stroke-miterlimit="3" stroke="#FFFFFF" stroke-opacity="0.98" fill="#FFFFFF" d="M9.094947017729282e-13,5.684341886080802e-14 L-15.173061747985912,1.1368683772161603e-13 L-15.17306174798523,37.78308117488717 L6.821210263296962e-13,37.78308117488723 L9.094947017729282e-13,5.684341886080802e-14 Z "/>
+	<path transform="matrix(1 0 0 1 72.88922764227637 609.4410569105693)" width="100" height="32.146341463414615" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" stroke="#6D6363" fill="#FFFFFF" fill-opacity="0.36" d="M0,0 L159.3922764227642,0 L159.3922764227642,32.146341463414615 L0,32.146341463414615 L0,0 Z "/>
+	<text type="textBox" transform="matrix(1 0 0 1 94.27032520325135 611.674796747973)" width="100" height="25" stroke-width="3.0093119224978935" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="22" text-align="left" text-anchor="start">
+	<tspan x="0" y="22">HELP</tspan></text>
+	
+	<path id="relodbutton" onmouseover="changeCursor(this,'pointer');" onclick="reloadPage()" transform="matrix(1 0 0 1 890.0951275971755 486.58827400153547)" width="100.45731707317054" height="100.45731707317077" 
+	stroke-width="2.495776947531305" stroke-miterlimit="3" stroke="#6D6363" fill="#FFFFFF" fill-opacity="0.013333333333333334" 
+	d="M-1.1368683772161603e-13,50.228658536585385 C-1.1368683772161603e-13,22.488133902439017 22.488133902438904,0 50.22865853658516,0 C77.9691831707313,0 100.45731707317043,22.488133902439017 100.45731707317043,50.228658536585385 C100.45731707317043,77.96918317073164 77.9691831707313,100.45731707317077 50.22865853658516,100.45731707317077 C22.488133902438904,100.45731707317077 -1.1368683772161603e-13,77.96918317073164 -1.1368683772161603e-13,50.228658536585385 Z "/>
+	
+	<path id="tapcol1"transform="matrix(0.7071067811865472 0.7071067811865478 -0.7071067811865478 0.7071067811865472 535.6428533246033 137.3591324279758)" width="39.305507734309685" height="40.53595511261264" stroke-width="2.5" stroke-miterlimit="3" stroke="#6D6363" fill="#F800C7" d="M9.437465343496115,12.25089903269398 L36.903964724098046,-0.06166965516203504 L37.85108539239911,40.474285457450605 L-1.454422341910572,38.154929912162174 L9.437465343496115,12.25089903269398 Z "/>
+
+	<path transform="matrix(1 0 0 1 494.8099593495944 77.68699186992008)" width="80.36585365853728" height="5" stroke-width="1.7426872714154937" stroke-miterlimit="3" stroke="#6D6363" fill="#BBA05B" fill-opacity="0.98" d="M-1.1368683772161603e-13,2.4999999999999147 C-1.1368683772161603e-13,1.1192879999999263 17.990507121951282,-1.1368683772161603e-13 40.18292682926858,-1.1368683772161603e-13 C62.375346536585766,-1.1368683772161603e-13 80.36585365853716,1.1192879999999263 80.36585365853716,2.4999999999999147 C80.36585365853716,3.8807119999999315 62.375346536585766,4.999999999999886 40.18292682926858,4.999999999999886 C17.990507121951282,4.999999999999886 -1.1368683772161603e-13,3.8807119999999315 -1.1368683772161603e-13,2.4999999999999147 Z "/>
+	<path transform="matrix(1 0 0 1 502.84654471544746 17.41260162601627)" width="65.63211382114616" height="14.733739837398375" stroke-width="2.951447657717603" stroke-linecap="round" stroke-miterlimit="3" stroke="#6D6363" fill="#BBA05B" fill-opacity="0.9933333333333333" d="M0,7.36686991869918 C0,3.298259639024394 14.692247482928565,0 32.816056910573025,0 C50.939866338217485,0 65.63211382114616,3.298259639024394 65.63211382114616,7.36686991869918 C65.63211382114616,11.43548019837398 50.939866338217485,14.733739837398375 32.816056910573025,14.733739837398375 C14.692247482928565,14.733739837398375 0,11.43548019837398 0,7.36686991869918 Z "/>
+
+	<path transform="matrix(1 0 0 1 502.84654471544474 26.763772095803418)" width="65.63" height="50.94806556449309" stroke-width="3" stroke-linecap="round" stroke-miterlimit="3" stroke="#6D6363" fill="#BBA05B" d="M-4.547473508864641e-13,-2.842170943040401e-14 L65.62999999999954,-2.842170943040401e-14 L65.62999999999954,50.948065564493064 L-4.547473508864641e-13,50.948065564493064 L-4.547473508864641e-13,-2.842170943040401e-14 Z "/>
+
+	<path id="tapbutton" onclick="changeDimensions()" cursor="pointer"
+		transform="matrix(1 0 0 1 511.55284552845336 30.13719512195229)" width="45.54065040650414" height="44.20121951219511" stroke-width="4" stroke-miterlimit="3" stroke="#575454" stroke-opacity="1" fill="#E00606" d="M0,22.100609756097555 C0,9.894778917073168 10.19462070243904,0 22.77032520325207,0 C35.3460297040651,0 45.54065040650414,9.894778917073168 45.54065040650414,22.100609756097555 C45.54065040650414,34.30644059512194 35.3460297040651,44.20121951219511 22.77032520325207,44.20121951219511 C10.19462070243904,44.20121951219511 0,34.30644059512194 0,22.100609756097555 Z "/>
+	
+	<path id="tapcol2" transform="matrix(1 0 0 1 526.1624928657117 182.74447221857696)" width="17.500000000000114" height="15.000000000000028" stroke-width="2.5" stroke-miterlimit="3" stroke="#6D6363" fill="#F800C7" d="M-2.2737367544323206e-13,0 L17.499999999999886,0 L17.499999999999886,15.000000000000028 L-1.1368683772161603e-13,15.000000000000028 L-2.2737367544323206e-13,0 Z "/>
+	<path id="tapcol3" transform="matrix(1 0 0 1 506.8648373983754 81.70528455285084)" width="56.25609756097515" height="80.36585365853597" stroke-width="2.5" stroke-miterlimit="3" stroke="#6D6363" fill="#F800C7" d="M-5.684341886080801e-13,-2.842170943040401e-14 L56.25609756097458,-2.842170943040401e-14 L56.25609756097458,80.36585365853594 L-5.684341886080801e-13,80.36585365853594 L-5.684341886080801e-13,-2.842170943040401e-14 Z "/>
+	
+	<path transform="matrix(1 0 0 1 417.12296747967486 450)" width="30" height="2.678861788617951" stroke-width="0.09198550851713022" stroke-miterlimit="3" stroke="#000A09" fill="#030303" d="M0,0 L30,0 L30,-2.678861788617951 L0,-2.678861788617951 L0,0 Z "/></g></svg></div><div class="html-layer"/>
+		
+	
+		
 </g>
 </svg>
 </div>
+
 <div class="html-layer"/></div>
+</div>
 </body>
 </html>

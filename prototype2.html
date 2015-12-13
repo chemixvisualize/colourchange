@@ -23,7 +23,8 @@
 </head>
 <body>
 <script type="application/ecmascript">
-
+var m = 0;
+	var current2=411;
 function changeCursor(el, cursor)
 {
 	el.style.cursor = cursor;
@@ -39,9 +40,23 @@ function changeDimensions() {
 		var showme = document.getElementById("visiblerect");
 		var current = document.getElementById('rect1').getBBox().height;
 		//var current1 = document.getElementById('tapinrect').getBBox().height;
+		//var current2 = document.getElementById('visiblerect').getBBox().height;
 		var button2 = document.getElementById("buttombutton");
 		var button = document.getElementById("tapbutton");
-		
+		var r = document.getElementById("volumeid");
+			var a = r.transform.baseVal.consolidate().matrix.a;
+			var b = r.transform.baseVal.consolidate().matrix.b;
+			var c = r.transform.baseVal.consolidate().matrix.c;
+			var d = r.transform.baseVal.consolidate().matrix.d;
+			var x = r.transform.baseVal.consolidate().matrix.e;
+			var y = r.transform.baseVal.consolidate().matrix.f;
+		var t = document.getElementById("voltext");
+			var a1 = t.transform.baseVal.consolidate().matrix.a;
+			var b1 = t.transform.baseVal.consolidate().matrix.b;
+			var c1 = t.transform.baseVal.consolidate().matrix.c;
+			var d1 = t.transform.baseVal.consolidate().matrix.d;
+			var x1 = t.transform.baseVal.consolidate().matrix.e;
+			var y1 = t.transform.baseVal.consolidate().matrix.f;
 		if(current>0 && current<=250)
 		{
 					changeCursor(button2, 'pointer');
@@ -64,10 +79,18 @@ function changeDimensions() {
 				current = current - 10;
 				document.getElementById("rect1").setAttribute("height", current);
 				
-				//console.log(current);
+				current2 = current2 - 10;
+				document.getElementById("visiblerect").setAttribute("height", current2);
+				
+				y=y-10;y1=y1-10;
+				r.setAttribute( 'transform', 'matrix('  + a + ' ' + b + ' ' + c + ' ' + d + ' ' + x + ' ' + y + ')');
+				t.setAttribute( 'transform', 'matrix('  + a1 + ' ' + b1 + ' ' + c1 + ' ' + d1 + ' ' + x1 + ' ' + y1 + ')');
+				m=m+5;
+				document.getElementById('volmeter').textContent = m+'.00 ml';
+				console.log(y);
 
 				
-					/*var current2 = document.getElementById('visiblerect').getBBox().height;
+					/*
 				console.log(current2);
 				current2 = current2 - 4.5;
 				document.getElementById("visiblerect").setAttribute("height", current2);
@@ -99,14 +122,22 @@ function changeHeight() {
 		var current = document.getElementById('rect1').getBBox().height;
 		var button2 = document.getElementById("buttombutton");
 		var button = document.getElementById("tapbutton");
-		//var current1 = document.getElementById('tapinrect').getBBox().height;
-		
-		/*if(current1>=5 && current1<96)
-		{
-					changeCursor(button, 'pointer');
-					button.style.fill="#E00606";
-		}
-	*/
+		var current2 = document.getElementById('visiblerect').getBBox().height;
+		var r = document.getElementById("volumeid");
+			var a = r.transform.baseVal.consolidate().matrix.a;
+			var b = r.transform.baseVal.consolidate().matrix.b;
+			var c = r.transform.baseVal.consolidate().matrix.c;
+			var d = r.transform.baseVal.consolidate().matrix.d;
+			var x = r.transform.baseVal.consolidate().matrix.e;
+			var y = r.transform.baseVal.consolidate().matrix.f;
+		var t = document.getElementById("voltext");
+			var a1 = t.transform.baseVal.consolidate().matrix.a;
+			var b1 = t.transform.baseVal.consolidate().matrix.b;
+			var c1 = t.transform.baseVal.consolidate().matrix.c;
+			var d1 = t.transform.baseVal.consolidate().matrix.d;
+			var x1 = t.transform.baseVal.consolidate().matrix.e;
+			var y1 = t.transform.baseVal.consolidate().matrix.f;
+			
 		if(current>0 && current<=240)
 		{   
 			changeCursor(button, 'pointer');
@@ -122,11 +153,13 @@ function changeHeight() {
 				console.log(current);
 				current = current + 10;
 				document.getElementById("rect1").setAttribute("height", current);
-			//transformMe();
-				/*console.log(current1);
-				current1 = current1 - 6;
-				document.getElementById("tapinrect").setAttribute("height", current1);*/
 				
+				y=y+10;y1=y1+10;
+				r.setAttribute( 'transform', 'matrix('  + a + ' ' + b + ' ' + c + ' ' + d + ' ' + x + ' ' + y + ')');
+				t.setAttribute( 'transform', 'matrix('  + a1 + ' ' + b1 + ' ' + c1 + ' ' + d1 + ' ' + x1 + ' ' + y1 + ')');
+				m=m-5;
+				document.getElementById('volmeter').textContent = m+'.00 ml';
+				console.log(y);
 		}
 		
 		else
@@ -138,7 +171,7 @@ function changeHeight() {
 		
 }
 
-function changeChemicals(v,s){
+function changeChemicals(v,s,r){
 
 		document.getElementById("rect1").setAttribute("height", "250"); 
 		var button2 = document.getElementById("buttombutton");
@@ -154,6 +187,8 @@ function changeChemicals(v,s){
 		document.getElementById("col").setAttribute("stroke",v); 
 		
 		document.getElementById('textname').textContent = s;
+		document.getElementById('upname').textContent = r;
+		
 		
 		document.getElementById("visiblerect").setAttribute("fill", v); 
 		document.getElementById("visiblerect2").setAttribute("fill",v);
@@ -164,24 +199,19 @@ function changeChemicals(v,s){
 		document.getElementById("tapcol3").setAttribute("fill", v); 
 
 	} 
-
-function changeLimit() {
+function changeChemicals2(v,s,r){
 		
-		document.getElementById("tapinrect").setAttribute("height", 50);
-			changeCursor(buttonlm, 'default');
-			
-			buttonlm.style.fill="#809797";
-}
+		document.getElementById('acidname').textContent = s;
+		document.getElementById('blacidname').textContent = r;
+		document.getElementById("visiblerect").setAttribute("fill", v); 
 
-function changeExcess() {
-		//var buttonlm = document.getElementById("limbutton");
-		var current1 = '20';
-		document.getElementById("tapinrect").setAttribute("height", current1);
-			changeCursor(buttonlm, 'default');
-			
-			buttonlm.style.fill="#809797";
-}
-	
+		/*document.getElementById("round").setAttribute("fill", v); */
+		document.getElementById("tapcol1").setAttribute("fill", v); 
+		document.getElementById("tapcol2").setAttribute("fill", v); 
+		document.getElementById("tapcol3").setAttribute("fill", v); 
+
+	} 
+
 	function change(v){
 		//changeDimensions();
 		document.getElementById("tapinrect").setAttribute("height", "5"); 
@@ -236,7 +266,9 @@ function changeExcess() {
 	</g>
 
 	<text  type="textBox"  transform="matrix(1 0 0 1 71.00000000000011 62.000000000000014)" width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
-	<tspan id="textname" x="0" y="25">Mn(2+)</tspan>
+	<tspan x="35" y="15" id="upname" font-size="20">2+</tspan>
+	<tspan id="textname" x="0" y="25">Mn</tspan>
+	<tspan x="50" y="28" id="bltname" font-size="20">(aq)</tspan>
 	</text>
 
 	<path id="col" transform="matrix(1 0 0 1 38.000000000000114 67.00000000000001)" width="23.414634146341484" height="23.414634146341456" stroke-width="2" stroke-miterlimit="3" stroke="#F800C7" stroke-opacity="1" fill="#F800C7" fill-opacity="1" d="M0,0 L23.414634146341484,0 L23.414634146341484,23.414634146341456 L0,23.414634146341456 L0,0 Z "/>
@@ -265,7 +297,7 @@ function changeExcess() {
 		<rect id="visiblerect2" width="22" height="44" x="526.5" y="610.5"
 				style="visibility: hidden;display=''" stroke="none"   fill="#F800C7" />
 				
-	<g id="volumeid"  transform="matrix(6.123233995736766e-17 1 -1 6.123233995736766e-17 714.109 596.046)">
+	<g id="volumeid"  transform="matrix(6.123233995736766e-17 1 -1 6.123233995736766e-17 705.109 596.046)">
 		<g transform="matrix(1 0 0 1 -1.1368683772161603e-13 -1.1368683772161603e-13)">
 			<g>
 				<g>
@@ -281,21 +313,21 @@ function changeExcess() {
 
 
 	<path transform="matrix(1 0 0 1 691.4146341463412 609.4638275750857)" width="20.000000000000114" height="0.19756741248352228" stroke-width="1.632993161855452" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.9933333333333333" fill="#FFFFFF" fill-opacity="0.04" d="M0,-2.2737367544323206e-13 L-20.000000000000114,-2.2737367544323206e-13 L-20.000000000000114,-0.19756741248374965 L0,-0.19756741248374965 L0,-2.2737367544323206e-13 Z "/>
-
 	<path transform="matrix(1 0 0 1 691.0823170731696 360.3069105691065)" width="20.000000000000114" height="0.19756741248352228" stroke-width="1.2758523536920823" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.9933333333333333" fill="#FFFFFF" fill-opacity="0.04" d="M0,-2.2737367544323206e-13 L-20.000000000000114,-2.2737367544323206e-13 L-20.000000000000114,-0.19756741248374965 L0,-0.19756741248374965 L0,-2.2737367544323206e-13 Z "/>
 
 	<path transform="matrix(1 0 0 1 680.8937462250356 359.6005002923506)" width="0.1999999999998181" height="249.99999999999994" stroke-width="2.0122090981587992" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.9933333333333333" fill="#FFFFFF" fill-opacity="0.04" d="M0,-1.1368683772161603e-13 L0.1999999999998181,249.99999999999983 "/>
 
-	<text type="textBox" transform="matrix(1 0 0 1 727.5711382113825 598.9817073170763)" width="113.95121951219515" height="25" stroke-width="3.0093119224978935" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="22" text-align="left" text-anchor="start">
-	<tspan x="0" y="22">0.00 ml</tspan>
+	<text type="textBox" id="voltext" transform="matrix(1 0 0 1 727.5711382113825 598.9817073170763)" width="113.95121951219515" height="25" stroke-width="3.0093119224978935" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="22" text-align="left" text-anchor="start">
+	<tspan id="volmeter" x="0" y="22">0.00 ml</tspan>
 	</text>
 
 	<text type="textBox" transform="matrix(1 0 0 1 641.0838815847758 285.4559288152551)" width="113.17073170732125" height="62" stroke-width="3.0093119224978935" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="27" text-align="left" text-anchor="start">
-	<tspan x="0" y="27">Volume</tspan>
+	<tspan  x="0" y="27">Volume</tspan>
 	</text>
 
 	<text type="textBox" transform="matrix(1 0 0 1 689.9999999999999 65.00000000000001)" width="115.68257497740595" height="28" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="24" text-align="left" text-anchor="start">
-	<tspan x="0" y="24">HCl</tspan>
+	<tspan id="acidname" x="0" y="24">Mixed with</tspan>
+	<tspan id="blacidname" x="35" y="32"></tspan>
 	</text>
 
 	<g id="phmove" transform="matrix(6.123233995736766e-17 1 -1 6.123233995736766e-17 1208 610)">
@@ -483,7 +515,7 @@ function changeExcess() {
 	<text type="textBox" transform="matrix(1 0 0 1 1220 608)" width="113.95121951219515" height="25" stroke-width="3.0093119224978935" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="22" text-align="left" text-anchor="start">
 	<tspan x="0" y="22">0.00</tspan>
 	</text>
-
+<!--
 	<path  id="limbutton" onclick="changelimit()" 
 		transform="matrix(1 0 0 1 906.9999999999999 64.29268292682933)" width="45.54065040650414" height="44.20121951219511" stroke-width="4" stroke-miterlimit="3" stroke="#575454" stroke-opacity="0.98" fill="#E2D9D9" d="M0,22.100609756097555 C0,9.894778917073168 10.19462070243904,0 22.77032520325207,0 C35.3460297040651,0 45.54065040650414,9.894778917073168 45.54065040650414,22.100609756097555 C45.54065040650414,34.30644059512194 35.3460297040651,44.20121951219511 22.77032520325207,44.20121951219511 C10.19462070243904,44.20121951219511 0,34.30644059512194 0,22.100609756097555 Z "/>
 
@@ -496,16 +528,20 @@ function changeExcess() {
 	<text type="textBox" transform="matrix(1 0 0 1 970.0000000000001 136.17682926829372)" width="113.95121951219515" height="25" stroke-width="3.0093119224978935" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
 	<tspan x="0" y="22">Excess</tspan>
 	</text>
-
+-->
 	<g transform="matrix(1 0 0 1 672.2621951219517 103.00000000000004)">
 		<path width="207.0000000000001" height="83.51219512195141" stroke-width="1.995654594237837" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M0,0 L207.0000000000001,0 L207.0000000000001,83.51219512195141 L0,83.51219512195141 L0,0 Z "/>
-		<text type="textBox" transform="matrix(1 0 0 1 17.737804878048223 8.999999999999943)" width="115.68257497740595" height="28" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="24" text-align="left" text-anchor="start">
+		<text type="textBox" transform="matrix(1 0 0 1 17.737804878048223 8.999999999999943)" 
+		id="colhcl" onclick="changeChemicals2('#E6E6E6','HCL','')" cursor="pointer"
+		width="115.68257497740595" height="28" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="24" text-align="left" text-anchor="start">
 		<tspan x="0" y="24">HCL</tspan>
 		</text>
 
-		<text type="textBox" transform="matrix(1 0 0 1 17.737804878048223 46.99999999999996)" width="115.68257497740595" height="28" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="24" text-align="left" text-anchor="start">
+		<text type="textBox" transform="matrix(1 0 0 1 17.737804878048223 46.99999999999996)" 
+		id="colnh" onclick="changeChemicals2('#F2F2F2','NH','3')" cursor="pointer"
+		width="115.68257497740595" height="28" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="24" text-align="left" text-anchor="start">
 		<tspan x="0" y="24">NH</tspan>
-		<tspan x="35" y="32">  3</tspan>
+		<tspan x="35" y="32">3</tspan>
 		</text>
 	</g>
 
@@ -514,107 +550,149 @@ function changeExcess() {
 
 		<g transform="matrix(1 0 0 1 13.804878048780537 7.902439024390702)">
 			<path  transform="matrix(1 0 0 1 -2.7000623958883807e-13 4.999999999999886)" 
-			id="col1" onclick="changeChemicals('#01DFA5','Ni(2+)')" cursor="pointer"
+			id="col1" onclick="changeChemicals('#01DFA5','Ni','2+')" cursor="pointer"
 			width="24.020016680566926" height="23.414634146341427" stroke-width="2.025689886498808" stroke-miterlimit="3" stroke="#01DFA5" stroke-opacity="0.98" fill="#01DFA5" fill-opacity="1" d="M2.8421709430404007e-13,8.526512829121202e-14 L24.02001668056721,8.526512829121202e-14 L24.02001668056721,23.414634146341513 L2.8421709430404007e-13,23.414634146341513 L2.8421709430404007e-13,8.526512829121202e-14 Z "/>
 			
-			<text type="textBox"  transform="matrix(1 0 0 1 33.85321100917436 0)" width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
-			<tspan x="0" y="25">Ni(2+)</tspan>
+			<text type="textBox"  transform="matrix(1 0 0 1 33.85321100917436 0)" width="171.7073170731707" 
+			onclick="changeChemicals('#01DFA5','Ni','2+')" cursor="pointer"
+			height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
+			
+			<tspan x="27" y="15" font-size="20">2+</tspan>
+			<tspan x="0" y="25">Ni</tspan>
+			<tspan x="50" y="28"  font-size="20">(aq)</tspan>
 			</text>
 		</g>
 
 		<g transform="matrix(1 0 0 1 13.804878048780878 48.53658536585398)">
 			<path transform="matrix(1 0 0 1 -2.7000623958883807e-13 4.999999999999886)" 
-			id="col2" onclick="changeChemicals('#00BFFF','Cu(2+)')" cursor="pointer"
+			id="col2" onclick="changeChemicals('#00BFFF','Cu','2+')" cursor="pointer"
 			width="24.020016680566926" height="23.414634146341427" stroke-width="2.025689886498808" stroke-miterlimit="3" stroke="#00BFFF" stroke-opacity="0.98" fill="#00BFFF" fill-opacity="1" d="M2.8421709430404007e-13,8.526512829121202e-14 L24.02001668056721,8.526512829121202e-14 L24.02001668056721,23.414634146341513 L2.8421709430404007e-13,23.414634146341513 L2.8421709430404007e-13,8.526512829121202e-14 Z "/>
 
-			<text type="textBox" transform="matrix(1 0 0 1 33.85321100917436 0)" width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
-			<tspan x="0" y="25">Cu(2+)</tspan>
+			<text type="textBox" transform="matrix(1 0 0 1 33.85321100917436 0)" 
+			onclick="changeChemicals('#00BFFF','Cu','2+')" cursor="pointer"
+			width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
+			<tspan x="34" y="15" font-size="20">2+</tspan>
+			<tspan x="0" y="25">Cu</tspan>
+			<tspan x="50" y="28"  font-size="20">(aq)</tspan>
 			</text>
 		</g>
 
 		<g transform="matrix(1 0 0 1 13.804878048780708 96.97560975609794)">
 			<path transform="matrix(1 0 0 1 -2.7000623958883807e-13 4.999999999999886)" 
-			id="col3" onclick="changeChemicals('#E6E6E6','Zn(2+)')" cursor="pointer"
+			id="col3" onclick="changeChemicals('#E6E6E6','Zn','2+')" cursor="pointer"
 			width="24.020016680566926" height="23.414634146341427" stroke-width="2.025689886498808" stroke-miterlimit="3" stroke="#E6E6E6" stroke-opacity="0.98" fill="#E6E6E6" fill-opacity="1" d="M2.8421709430404007e-13,8.526512829121202e-14 L24.02001668056721,8.526512829121202e-14 L24.02001668056721,23.414634146341513 L2.8421709430404007e-13,23.414634146341513 L2.8421709430404007e-13,8.526512829121202e-14 Z "/>
 
-			<text type="textBox" transform="matrix(1 0 0 1 33.85321100917436 0)" width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
-			<tspan x="0" y="25">Zn(2+)</tspan>
+			<text type="textBox" transform="matrix(1 0 0 1 33.85321100917436 0)" 
+			onclick="changeChemicals('#E6E6E6','Zn','2+')" cursor="pointer"
+			width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
+			<tspan x="30" y="15" font-size="20">2+</tspan>
+			<tspan x="0" y="25">Zn</tspan>
+			<tspan x="50" y="28"  font-size="20">(aq)</tspan>
 			</text>
 		</g>
 
 		<g transform="matrix(1 0 0 1 13.804878048780708 146.97560975609792)">
 			<path transform="matrix(1 0 0 1 -2.7000623958883807e-13 4.999999999999886)" 
-			id="col4" onclick="changeChemicals('#F7819F','Co(2+)')" cursor="pointer"
+			id="col4" onclick="changeChemicals('#F7819F','Co','2+')" cursor="pointer"
 			width="24.020016680566926" height="23.414634146341427" stroke-width="2.025689886498808" stroke-miterlimit="3" stroke="#F7819F" stroke-opacity="0.98" fill="#F7819F" fill-opacity="1" d="M2.8421709430404007e-13,8.526512829121202e-14 L24.02001668056721,8.526512829121202e-14 L24.02001668056721,23.414634146341513 L2.8421709430404007e-13,23.414634146341513 L2.8421709430404007e-13,8.526512829121202e-14 Z "/>
 
-			<text type="textBox" transform="matrix(1 0 0 1 33.85321100917436 0)" width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
-			<tspan x="0" y="25">Co(2+)</tspan>
+			<text type="textBox" transform="matrix(1 0 0 1 33.85321100917436 0)" 
+			onclick="changeChemicals('#F7819F','Co','2+')" cursor="pointer"
+			width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
+			<tspan x="34" y="15" font-size="20">2+</tspan>
+			<tspan x="0" y="25">Co</tspan>
+			<tspan x="50" y="28"  font-size="20">(aq)</tspan>
 			</text>
 		</g>
 
 		<g transform="matrix(1 0 0 1 13.804878048780708 196.97560975609792)">
 			<path transform="matrix(1 0 0 1 -2.7000623958883807e-13 4.999999999999886)" 
-			id="col5" onclick="changeChemicals('#B404AE','Ti(3+)')" cursor="pointer"
+			id="col5" onclick="changeChemicals('#B404AE','Ti','3+')" cursor="pointer"
 			width="24.020016680566926" height="23.414634146341427" stroke-width="2.025689886498808" stroke-miterlimit="3" stroke="#B404AE" stroke-opacity="0.98" fill="#B404AE" fill-opacity="1" d="M2.8421709430404007e-13,8.526512829121202e-14 L24.02001668056721,8.526512829121202e-14 L24.02001668056721,23.414634146341513 L2.8421709430404007e-13,23.414634146341513 L2.8421709430404007e-13,8.526512829121202e-14 Z "/>
 
-			<text type="textBox" transform="matrix(1 0 0 1 33.85321100917436 0)" width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
-			<tspan x="0" y="25">Ti(3+)</tspan>
+			<text type="textBox" transform="matrix(1 0 0 1 33.85321100917436 0)" 
+			onclick="changeChemicals('#B404AE','Ti','3+')" cursor="pointer"
+			width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
+			<tspan x="26" y="15" font-size="20">3+</tspan>
+			<tspan x="0" y="25">Ti</tspan>
+			<tspan x="48" y="28"  font-size="20">(aq)</tspan>
 			</text>
 		</g>
 
 		<g transform="matrix(1 0 0 1 13.804878048780708 246.97560975609792)">
 			<path transform="matrix(1 0 0 1 -2.7000623958883807e-13 4.999999999999886)" 
-			id="col6" onclick="changeChemicals('#A9F5A9','Fe(2+)')" cursor="pointer"
+			id="col6" onclick="changeChemicals('#A9F5A9','Fe','2+')" cursor="pointer"
 			width="24.020016680566926" height="23.414634146341427" stroke-width="2.025689886498808" stroke-miterlimit="3" stroke="#A9F5A9" stroke-opacity="0.98" fill="#A9F5A9" fill-opacity="1" d="M2.8421709430404007e-13,8.526512829121202e-14 L24.02001668056721,8.526512829121202e-14 L24.02001668056721,23.414634146341513 L2.8421709430404007e-13,23.414634146341513 L2.8421709430404007e-13,8.526512829121202e-14 Z "/>
 
-			<text type="textBox" transform="matrix(1 0 0 1 33.85321100917436 0)" width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
-			<tspan x="0" y="25">Fe(2+)</tspan>
+			<text type="textBox" transform="matrix(1 0 0 1 33.85321100917436 0)" 
+			onclick="changeChemicals('#A9F5A9','Fe','2+')" cursor="pointer"
+			width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
+			<tspan x="32" y="15" font-size="20">2+</tspan>
+			<tspan x="0" y="25">Fe</tspan>
+			<tspan x="50" y="28"  font-size="20">(aq)</tspan>
 			</text>
 		</g>
 
 		<g transform="matrix(1 0 0 1 13.804878048780708 296.9756097560979)">
 			<path transform="matrix(1 0 0 1 -2.7000623958883807e-13 4.999999999999886)" 
-			id="col7" onclick="changeChemicals('#F7D358','Fe(3+)')" cursor="pointer"
+			id="col7" onclick="changeChemicals('#F7D358','Fe','3+')" cursor="pointer"
 			width="24.020016680566926" height="23.414634146341427" stroke-width="2.025689886498808" stroke-miterlimit="3" stroke="#F7D358" stroke-opacity="0.98" fill="#F7D358" fill-opacity="1" d="M2.8421709430404007e-13,8.526512829121202e-14 L24.02001668056721,8.526512829121202e-14 L24.02001668056721,23.414634146341513 L2.8421709430404007e-13,23.414634146341513 L2.8421709430404007e-13,8.526512829121202e-14 Z "/>
 
-			<text type="textBox" transform="matrix(1 0 0 1 33.85321100917436 0)" width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
-			<tspan x="0" y="25">Fe(3+)</tspan>
+			<text type="textBox" transform="matrix(1 0 0 1 33.85321100917436 0)" 
+			onclick="changeChemicals('#F7D358','Fe','3+')" cursor="pointer"
+			width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
+			<tspan x="32" y="15" font-size="20">3+</tspan>
+			<tspan x="0" y="25">Fe</tspan>
+			<tspan x="50" y="28"  font-size="20">(aq)</tspan>
 			</text>
 		</g>
 
 		<g transform="matrix(1 0 0 1 13.804878048780708 346.97560975609804)">
 			<path transform="matrix(1 0 0 1 -2.7000623958883807e-13 4.999999999999886)" 
-			id="col8" onclick="changeChemicals('#3B0B39','V(2+)')" cursor="pointer"
+			id="col8" onclick="changeChemicals('#3B0B39','V','2+')" cursor="pointer"
 			width="24.020016680566926" height="23.414634146341427" stroke-width="2.025689886498808" stroke-miterlimit="3" stroke="#3B0B39" stroke-opacity="0.98" fill="#3B0B39" fill-opacity="1" d="M2.8421709430404007e-13,8.526512829121202e-14 L24.02001668056721,8.526512829121202e-14 L24.02001668056721,23.414634146341513 L2.8421709430404007e-13,23.414634146341513 L2.8421709430404007e-13,8.526512829121202e-14 Z "/>
 
-			<text type="textBox" transform="matrix(1 0 0 1 33.85321100917436 0)" width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
-			<tspan x="0" y="25">V(2+)</tspan>
+			<text type="textBox" transform="matrix(1 0 0 1 33.85321100917436 0)" 
+			onclick="changeChemicals('#3B0B39','V','2+')" cursor="pointer"
+			width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
+			<tspan x="22" y="15" font-size="20">2+</tspan>
+			<tspan x="0" y="25">V</tspan>
+			<tspan x="42" y="28"  font-size="20">(aq)</tspan>
 			</text>
 		</g>
 
 		<g transform="matrix(1 0 0 1 13.804878048780537 396.97560975609804)">
 			<path transform="matrix(1 0 0 1 -2.7000623958883807e-13 4.999999999999886)" 
-			id="col9" onclick="changeChemicals('#BE81F7','Cr(3+)')" cursor="pointer"
+			id="col9" onclick="changeChemicals('#BE81F7','Cr','3+')" cursor="pointer"
 			width="24.020016680566926" height="23.414634146341427" stroke-width="2.025689886498808" stroke-miterlimit="3" stroke="#BE81F7" stroke-opacity="0.98" fill="#BE81F7" fill-opacity="1" d="M2.8421709430404007e-13,8.526512829121202e-14 L24.02001668056721,8.526512829121202e-14 L24.02001668056721,23.414634146341513 L2.8421709430404007e-13,23.414634146341513 L2.8421709430404007e-13,8.526512829121202e-14 Z "/>
 
-			<text type="textBox" transform="matrix(1 0 0 1 33.85321100917436 0)" width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
-			<tspan x="0" y="25">Cr(3+)</tspan>
+			<text type="textBox" transform="matrix(1 0 0 1 33.85321100917436 0)" 
+			onclick="changeChemicals('#BE81F7','Cr','3+')" cursor="pointer"
+			width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
+			<tspan x="30" y="15" font-size="20">3+</tspan>
+			<tspan x="0" y="25">Cr</tspan>
+			<tspan x="48" y="28"  font-size="20">(aq)</tspan>
 			</text>
 		</g>
 
 		<g transform="matrix(1 0 0 1 13.804878048780708 446.9756097560979)">
 			<path  
-			id="col3" onclick="changeChemicals('F800C7','Mn(2+)')" cursor="pointer"
+			id="col3" onclick="changeChemicals('#F800C7','Mn','2+')" cursor="pointer"
 			transform="matrix(1 0 0 1 -2.7000623958883807e-13 4.999999999999886)" width="24.020016680566926" height="23.414634146341427" stroke-width="2.025689886498808" stroke-miterlimit="3" stroke="#F800C7" stroke-opacity="0.98" fill="#F800C7" fill-opacity="1" d="M2.8421709430404007e-13,8.526512829121202e-14 L24.02001668056721,8.526512829121202e-14 L24.02001668056721,23.414634146341513 L2.8421709430404007e-13,23.414634146341513 L2.8421709430404007e-13,8.526512829121202e-14 Z "/>
 
-			<text type="textBox" transform="matrix(1 0 0 1 33.85321100917436 0)" width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
-			<tspan x="0" y="25">Mn(2+)</tspan>
+			<text type="textBox" transform="matrix(1 0 0 1 33.85321100917436 0)" 
+			onclick="changeChemicals('#F800C7','Mn','2+')" cursor="pointer"
+			width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
+			<tspan x="34" y="15" font-size="20">2+</tspan>
+			<tspan x="0" y="25">Mn</tspan>
+			<tspan x="50" y="28"  font-size="20">(aq)</tspan>
 			</text>
 		</g>
 	</g>
 
 	<path id="buttombutton" onclick="changeHeight()" 
 		transform="matrix(1 0 0 1 510.8831300813005 620.1565040650408)" width="53.57723577235788" height="18.752032520324974" stroke-width="2.720089642024847" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#809797" d="M0,0 L53.57723577235788,0 L53.57723577235788,18.752032520324974 L0,18.752032520324974 L0,0 Z "/>
+	
 	<rect id="visiblerect" width="15.5" height="402" x="526.86" y="198.54"
 				style="visibility: hidden;display=''" stroke="none"   fill="#F800C7" />
 				

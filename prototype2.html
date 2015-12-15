@@ -23,8 +23,10 @@
 </head>
 <body>
 <script type="application/ecmascript">
-var m = 0;
-	var current2=411;
+var m=5;
+var clicks=0;
+var limit=1;
+
 function changeCursor(el, cursor)
 {
 	el.style.cursor = cursor;
@@ -33,39 +35,114 @@ function changeCursor(el, cursor)
 function reloadPage() {
     location.reload();
 }
+function changeChemicals(v,s,r){
+		
+		document.getElementById("rect1").setAttribute("height", "250"); 
+			var current = document.getElementById('rect1').getBBox().height;
+		
+		
+		//document.getElementById("visiblerect").setAttribute("height", "412");
+		document.getElementById("visiblerect").setAttribute("height", "412"); 
+		var button2 = document.getElementById("buttombutton");
+		var button = document.getElementById("tapbutton");
+		changeCursor(button, 'pointer');
+					button.style.fill="#E00606";
+					changeCursor(button2, 'default');
+			//showme.style.visibility = "hidden";
+			button2.style.fill="#809797";
 
+			var a = 0;
+			var b = 1;
+			var c = -1;
+			var d = 0;
+			var x = 705.109;
+			var y = 596.046;
+		
 	
+			var a1 = 1;
+			var b1 = 0;
+			var c1 = 0;
+			var d1 = 1;
+			var x1 = 727.5711382113825;
+			var y1 = 598.9817073170763;
+			
+		var col = document.getElementById("col");
+		document.getElementById("col").setAttribute("fill",v); 
+		document.getElementById("col").setAttribute("stroke",v); 
+		
+		document.getElementById('textname').textContent = s;
+		document.getElementById('upname').textContent = r;
+		
+		
+		document.getElementById("visiblerect").setAttribute("fill", v); 
+		document.getElementById("visiblerect2").setAttribute("fill",v);
+		
+		document.getElementById("round").setAttribute("fill", v); 
+		document.getElementById("tapcol1").setAttribute("fill", v); 
+		document.getElementById("tapcol2").setAttribute("fill", v); 
+		document.getElementById("tapcol3").setAttribute("fill", v); 
+		
+		document.getElementById("volumeid").setAttribute( 'transform', 'matrix('  + a + ' ' + b + ' ' + c + ' ' + d + ' ' + x + ' ' + y + ')');
+		document.getElementById("voltext").setAttribute( 'transform', 'matrix('  + a1 + ' ' + b1 + ' ' + c1 + ' ' + d1 + ' ' + x1 + ' ' + y1 + ')');
+		document.getElementById('volmeter').setAttribute("fill","#000000");	
+		document.getElementById('volmeter').textContent =  0+'.00 ml';
+		
+		
+		
+
+	} 
+function changeChemicals2(v,s,r){
+		
+		document.getElementById('acidname').textContent = s;
+		document.getElementById('blacidname').textContent = r;
+		document.getElementById("visiblerect").setAttribute("fill", v); 
+			var button = document.getElementById("tapbutton");
+		changeCursor(button, 'pointer');
+					button.style.fill="#E00606";
+		/*document.getElementById("round").setAttribute("fill", v); */
+		document.getElementById("tapcol1").setAttribute("fill", v); 
+		document.getElementById("tapcol2").setAttribute("fill", v); 
+		document.getElementById("tapcol3").setAttribute("fill", v); 
+		document.getElementById('volmeter').setAttribute("fill","#000000");
+		var currentrect = document.getElementById('rect1').getBBox().height;
+		//change('url(#g929)');
+		 //change('url(#g928)');
+		 //change('url(#g927)');
+		 //change('url(#g926)');
+		
+	} 
+
 function changeDimensions() {
 
 		var showme = document.getElementById("visiblerect");
+		var Rndfillcolor = document.getElementById("col").getAttribute("fill");
 		var current = document.getElementById('rect1').getBBox().height;
+		
 		//var current1 = document.getElementById('tapinrect').getBBox().height;
-		//var current2 = document.getElementById('visiblerect').getBBox().height;
+		var current2 = document.getElementById('visiblerect').getBBox().height;
 		var button2 = document.getElementById("buttombutton");
 		var button = document.getElementById("tapbutton");
 		var r = document.getElementById("volumeid");
-			var a = r.transform.baseVal.consolidate().matrix.a;
-			var b = r.transform.baseVal.consolidate().matrix.b;
-			var c = r.transform.baseVal.consolidate().matrix.c;
-			var d = r.transform.baseVal.consolidate().matrix.d;
-			var x = r.transform.baseVal.consolidate().matrix.e;
-			var y = r.transform.baseVal.consolidate().matrix.f;
+		var a = r.transform.baseVal.consolidate().matrix.a;var b = r.transform.baseVal.consolidate().matrix.b;var c = r.transform.baseVal.consolidate().matrix.c;var d = r.transform.baseVal.consolidate().matrix.d;var x = r.transform.baseVal.consolidate().matrix.e;var y = r.transform.baseVal.consolidate().matrix.f;
 		var t = document.getElementById("voltext");
-			var a1 = t.transform.baseVal.consolidate().matrix.a;
-			var b1 = t.transform.baseVal.consolidate().matrix.b;
-			var c1 = t.transform.baseVal.consolidate().matrix.c;
-			var d1 = t.transform.baseVal.consolidate().matrix.d;
-			var x1 = t.transform.baseVal.consolidate().matrix.e;
-			var y1 = t.transform.baseVal.consolidate().matrix.f;
+		var a1 = t.transform.baseVal.consolidate().matrix.a;var b1 = t.transform.baseVal.consolidate().matrix.b;var c1 = t.transform.baseVal.consolidate().matrix.c;var d1 = t.transform.baseVal.consolidate().matrix.d;var x1 = t.transform.baseVal.consolidate().matrix.e;var y1 = t.transform.baseVal.consolidate().matrix.f;
+		
+		var fillcolor = document.getElementById("visiblerect").getAttribute("fill");
+		
+		
+		
+		
 		if(current>0 && current<=250)
 		{
-					changeCursor(button2, 'pointer');
-					button2.style.fill="#E00606";
-						
+			changeCursor(button2, 'pointer');
+			button2.style.fill="#E00606";				
 		}
-	
 		
-		if(current>=99)
+		
+		if(current>=99 && (fillcolor=="#01DFA5" || fillcolor=="#00BFFF" || fillcolor=="#E6E6E6"
+							|| fillcolor=="#F7819F" || fillcolor=="#B404AE" || fillcolor=="#A9F5A9"
+							|| fillcolor=="#F7D358" || fillcolor=="#3B0B39" || fillcolor=="#BE81F7"
+							|| fillcolor=="#F800C7"))
 		{   
 			showme.style.display = "";
 			if(showme.style.visibility == "hidden" ) {
@@ -75,36 +152,87 @@ function changeDimensions() {
 		 setTimeout(function(){showme.style.visibility = "hidden"; }, 1000);
 			
 				
+				if (current == 250)  m = 5;
+				else m = m+5;
+				current = current - 10;console.log(current);
+				document.getElementById("rect1").setAttribute("height", current);
+					
+				current2 = current2 - 10;
+				document.getElementById("visiblerect").setAttribute("height", current2);
+				console.log(current2);
+				
+				y=y-10;y1=y1-10;
+				r.setAttribute( 'transform', 'matrix('  + a + ' ' + b + ' ' + c + ' ' + d + ' ' + x + ' ' + y + ')');
+				t.setAttribute( 'transform', 'matrix('  + a1 + ' ' + b1 + ' ' + c1 + ' ' + d1 + ' ' + x1 + ' ' + y1 + ')');
+				//m=m+5;
+			
+				
+				document.getElementById('volmeter').textContent = m+'.00 ml';
+				console.log(m);
+				
+				if(current==90)
+				{
+					document.getElementById('volmeter').setAttribute("fill","#FF0000");
+				}
+				else{
+					document.getElementById('volmeter').setAttribute("fill","#000000");
+				}
+	
+		}
+		else if(current>=39 && (fillcolor=="#E6E6F6" || fillcolor=="#F2F2F2"))
+		{
+			showme.style.display = "";
+			if(showme.style.visibility == "hidden" ) {
+				showme.style.visibility = "visible";
+			}
+			
+			setTimeout(function(){showme.style.visibility = "hidden"; }, 1000);
+			
 				console.log(current);
 				current = current - 10;
 				document.getElementById("rect1").setAttribute("height", current);
 				
 				current2 = current2 - 10;
 				document.getElementById("visiblerect").setAttribute("height", current2);
+				console.log(current2);
 				
 				y=y-10;y1=y1-10;
 				r.setAttribute( 'transform', 'matrix('  + a + ' ' + b + ' ' + c + ' ' + d + ' ' + x + ' ' + y + ')');
 				t.setAttribute( 'transform', 'matrix('  + a1 + ' ' + b1 + ' ' + c1 + ' ' + d1 + ' ' + x1 + ' ' + y1 + ')');
 				m=m+5;
 				document.getElementById('volmeter').textContent = m+'.00 ml';
-				console.log(y);
+				console.log(m);
+				if(current==30)
+				{
+					document.getElementById('volmeter').setAttribute("fill","#FF0000");
+					current=0;
+				}
+				else{
+					document.getElementById('volmeter').setAttribute("fill","#000000");
+				}
+				
+				document.getElementById('colhcl').addEventListener('click', function(){clicks=0;});
+				document.getElementById('colhcl').addEventListener('click', function(){limit=1;});
+				clicks += 1;console.log(clicks);
+				if(limit>0){limit = limit-0.2;}
+				else limit=0;
+				console.log(limit);
+				
+				switch (Rndfillcolor) {
+					  case "#01DFA5": colorHCl(limit,'h9091');break;
+					  case "#00BFFF": colorHCl(limit,'h9191');break;
+					  case "#E6E6E6": colorHCl(limit,'h9291');break;
+					  case "#F7819F": colorHCl(limit,'h9391');break;
+					  case "#B404AE": colorHCl(limit,'h9491');break;
+					  case "#A9F5A9": colorHCl(limit,'h9591');break;
+					  case "#F7D358": colorHCl(limit,'h9691');break;
+					  case "#3B0B39": colorHCl(limit,'h9791');break;
+					  case "#BE81F7": colorHCl(limit,'h9891');break;
+					  case "#F800C7": colorHCl(limit,'h9991');break;  
+					}
+				
 
-				
-					/*
-				console.log(current2);
-				current2 = current2 - 4.5;
-				document.getElementById("visiblerect").setAttribute("height", current2);
-				console.log(current2);*/
-				
-						
-				
-				//console.log(current1);
-				//current1 = current1 + 6;
-				//document.getElementById("tapinrect").setAttribute("height", current1);
-				//console.log(current1);
-				
 		}
-		
 		else
 		{
 			var button = document.getElementById("tapbutton");
@@ -112,8 +240,10 @@ function changeDimensions() {
 			showme.style.visibility = "hidden";
 			button.style.fill="#809797";
 		}
+		
+		
 			
-
+		
 	}
 
 function changeHeight() {
@@ -171,66 +301,119 @@ function changeHeight() {
 		
 }
 
-function changeChemicals(v,s,r){
 
-		document.getElementById("rect1").setAttribute("height", "250"); 
-		var button2 = document.getElementById("buttombutton");
-		var button = document.getElementById("tapbutton");
-		changeCursor(button, 'pointer');
-					button.style.fill="#E00606";
-					changeCursor(button2, 'default');
-			//showme.style.visibility = "hidden";
-			button2.style.fill="#809797";
-			
-		var col = document.getElementById("col");
-		document.getElementById("col").setAttribute("fill",v); 
-		document.getElementById("col").setAttribute("stroke",v); 
-		
-		document.getElementById('textname').textContent = s;
-		document.getElementById('upname').textContent = r;
-		
-		
-		document.getElementById("visiblerect").setAttribute("fill", v); 
-		document.getElementById("visiblerect2").setAttribute("fill",v);
-		
-		document.getElementById("round").setAttribute("fill", v); 
-		document.getElementById("tapcol1").setAttribute("fill", v); 
-		document.getElementById("tapcol2").setAttribute("fill", v); 
-		document.getElementById("tapcol3").setAttribute("fill", v); 
-
-	} 
-function changeChemicals2(v,s,r){
-		
-		document.getElementById('acidname').textContent = s;
-		document.getElementById('blacidname').textContent = r;
-		document.getElementById("visiblerect").setAttribute("fill", v); 
-
-		/*document.getElementById("round").setAttribute("fill", v); */
-		document.getElementById("tapcol1").setAttribute("fill", v); 
-		document.getElementById("tapcol2").setAttribute("fill", v); 
-		document.getElementById("tapcol3").setAttribute("fill", v); 
-
-	} 
 
 	function change(v){
-		//changeDimensions();
-		document.getElementById("tapinrect").setAttribute("height", "5"); 
-		document.getElementById("rect1").setAttribute("height", "229"); 
-		var button = document.getElementById("tapbutton");
-			changeCursor(button, 'pointer');
-			
-			button.style.fill="#6F0C0C";
-		document.getElementById("visiblerect").setAttribute("fill", v); 
+
 		document.getElementById("round").setAttribute("fill", v); 
 		
 	} 
+	
+	function colorHCl(l,u)
+	{
+			if(u=="h9091")
+			{
+				if(l>0){document.getElementById('h9091').setAttribute("offset", l);change('url(#h909)');}
+						else{document.getElementById('h9091').setAttribute("offset", 0);change('url(#h909)');}
+			}
+			if(u=="h9191")
+			{
+				if(l>0){document.getElementById('h9191').setAttribute("offset", l);change('url(#h919)');}
+						else{document.getElementById('h9191').setAttribute("offset", 0);change('url(#h919)');}
+			}
+			if(u=="h9291")
+			{
+					if(l>0){document.getElementById('h9291').setAttribute("offset", l);change('url(#h929)');}
+						else{document.getElementById('h9291').setAttribute("offset", 0);change('url(#h929)');}
+			}
+			if(u=="h9391")
+			{
+				if(l>0){document.getElementById('h9391').setAttribute("offset", l);change('url(#h939)');}
+						else{document.getElementById('h9391').setAttribute("offset", 0);change('url(#h939)');}
+			}
+			if(u=="h9491")
+			{
+				if(l>0){document.getElementById('h9491').setAttribute("offset", l);change('url(#h949)');}
+						else{document.getElementById('h9491').setAttribute("offset", 0);change('url(#h949)');}
+			}
+			if(u=="h9591")
+			{
+				if(l>0){document.getElementById('h9591').setAttribute("offset", l);change('url(#h959)');}
+						else{document.getElementById('h9591').setAttribute("offset", 0);change('url(#h959)');}
+			}
+			if(u=="h9691")
+			{
+				if(l>0){document.getElementById('h9691').setAttribute("offset", l);change('url(#h969)');}
+						else{document.getElementById('h9691').setAttribute("offset", 0);change('url(#h969)');}
+			}if(u=="h9791")
+			{
+				if(l>0){document.getElementById('h9791').setAttribute("offset", l);change('url(#h979)');}
+						else{document.getElementById('h9791').setAttribute("offset", 0);change('url(#h979)');}
+			}
+			if(u=="h9891")
+			{
+				if(l>0){document.getElementById('h9891').setAttribute("offset", l);change('url(#h989)');}
+						else{document.getElementById('h9891').setAttribute("offset", 0);change('url(#h989)');}
+			}
+			if(u=="h9991")
+			{
+				if(l>0){document.getElementById('h9991').setAttribute("offset", l);change('url(#h999)');}
+						else{document.getElementById('h9991').setAttribute("offset", 0);change('url(#h999)');}
+			}
+		
+	}
 	
 </script>
 
 <div class="page">
 <div class="svg-layer">
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="ShapeDemo" pageAlignment="none" x="0px" y="0px" viewBox="0 0 1300 659" enable-background="new 0 0 1300 659" xml:space="preserve">
-<defs xmlns=""/>
+<defs>
+	<linearGradient id="h909" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#01DFA5" stop-opacity=""1" />
+      <stop id="h9091" offset="90%" stop-color="#F7FE2E" stop-opacity="1" />
+    </linearGradient>
+	
+	<linearGradient id="h919" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#00BFFF" stop-opacity=""1" />
+      <stop id="h9191" offset="90%" stop-color="#D0FA58" stop-opacity="1" />
+    </linearGradient>
+	
+	<linearGradient id="h929" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#E6E6E6" stop-opacity=""1" />
+      <stop id="h9291" offset="90%" stop-color="#F2F2F2" stop-opacity="1" />
+    </linearGradient>
+	<linearGradient id="h939" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#F7819F" stop-opacity=""1" />
+      <stop id="h9391" offset="90%" stop-color="#58ACFA" stop-opacity="1" />
+    </linearGradient>
+	<linearGradient id="h949" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#B404AE" stop-opacity=""1" />
+      <stop id="h9491" offset="90%" stop-color="##A4A4A4" stop-opacity="1" />
+    </linearGradient>
+	<linearGradient id="h959" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#A9F5A9" stop-opacity=""1" />
+      <stop id="h9591" offset="90%" stop-color="#D0FA58" stop-opacity="1" />
+    </linearGradient>
+	<linearGradient id="h969" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#F7D358" stop-opacity=""1" />
+      <stop id="h9691" offset="90%" stop-color="#D0FA58" stop-opacity="1" />
+    </linearGradient>
+	<linearGradient id="h979" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#3B0B39" stop-opacity=""1" />
+      <stop id="h9791" offset="90%" stop-color="#D0FA58" stop-opacity="1" />
+    </linearGradient>
+	<linearGradient id="h989" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#BE81F7" stop-opacity=""1" />
+      <stop id="h9891" offset="90%" stop-color="#D0FA58" stop-opacity="1" />
+    </linearGradient>
+	<linearGradient id="h999" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#F800C7" stop-opacity=""1" />
+      <stop id="h9991" offset="90%" stop-color="#D0FA58" stop-opacity="1" />
+    </linearGradient>
+	  
+	
+</defs>
 <g xmlns="" type="LAYER" name="workspace" id="workspace" locked="true"/>
 <g xmlns="" id="Layer 01" type="LAYER" name="Layer 01">
 
@@ -297,7 +480,7 @@ function changeChemicals2(v,s,r){
 		<rect id="visiblerect2" width="22" height="44" x="526.5" y="610.5"
 				style="visibility: hidden;display=''" stroke="none"   fill="#F800C7" />
 				
-	<g id="volumeid"  transform="matrix(6.123233995736766e-17 1 -1 6.123233995736766e-17 705.109 596.046)">
+	<g id="volumeid"  transform="matrix(0 1 -1 0 705.109 596.046)">
 		<g transform="matrix(1 0 0 1 -1.1368683772161603e-13 -1.1368683772161603e-13)">
 			<g>
 				<g>
@@ -532,7 +715,7 @@ function changeChemicals2(v,s,r){
 	<g transform="matrix(1 0 0 1 672.2621951219517 103.00000000000004)">
 		<path width="207.0000000000001" height="83.51219512195141" stroke-width="1.995654594237837" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M0,0 L207.0000000000001,0 L207.0000000000001,83.51219512195141 L0,83.51219512195141 L0,0 Z "/>
 		<text type="textBox" transform="matrix(1 0 0 1 17.737804878048223 8.999999999999943)" 
-		id="colhcl" onclick="changeChemicals2('#E6E6E6','HCL','')" cursor="pointer"
+		id="colhcl" onclick="changeChemicals2('#E6E6F6','HCL','')" cursor="pointer"
 		width="115.68257497740595" height="28" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="24" text-align="left" text-anchor="start">
 		<tspan x="0" y="24">HCL</tspan>
 		</text>
@@ -693,7 +876,7 @@ function changeChemicals2(v,s,r){
 	<path id="buttombutton" onclick="changeHeight()" 
 		transform="matrix(1 0 0 1 510.8831300813005 620.1565040650408)" width="53.57723577235788" height="18.752032520324974" stroke-width="2.720089642024847" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#809797" d="M0,0 L53.57723577235788,0 L53.57723577235788,18.752032520324974 L0,18.752032520324974 L0,0 Z "/>
 	
-	<rect id="visiblerect" width="15.5" height="402" x="526.86" y="198.54"
+	<rect id="visiblerect" width="15.5" height="412" x="526.86" y="198.54"
 				style="visibility: hidden;display=''" stroke="none"   fill="#F800C7" />
 				
 	

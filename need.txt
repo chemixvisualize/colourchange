@@ -1,0 +1,404 @@
+<radialGradient id="g926" gradientUnits="userSpaceOnUse" cx="50%" cy="50%" r="0%">
+	<stop stop-color="#00BFFF" offset="0"/>
+	<stop stop-color="#F3F781" offset="100"/>
+	</radialGradient>
+	<radialGradient id="g927" gradientUnits="userSpaceOnUse" cx="50%" cy="50%" r="50%">
+	<stop stop-color="#00BFFF" offset="0"/>
+	<stop stop-color="#F3F781" offset="100"/>
+	</radialGradient>
+	<radialGradient id="g928" gradientUnits="userSpaceOnUse" cx="50%" cy="50%" r="75%">
+	<stop stop-color="#00BFFF" offset="0"/>
+	<stop stop-color="#F3F781" offset="100"/>
+	</radialGradient>
+	<radialGradient id="g929" gradientUnits="userSpaceOnUse" cx="50%" cy="50%" r="100%">
+	<stop stop-color="#00BFFF" offset="0"/>
+	<stop stop-color="#F3F781" offset="100"/>
+	</radialGradient>
+	
+	<svg width="660" height="220">
+  <defs>
+    <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#05a"/>
+      <stop offset="100%" stop-color="#0a5"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="10" y="10" width="600" height="200" fill="url(#linear)" />
+</svg>
+
+changeChemicals2('#E6E6F6','HCL','')
+changeChemicals2('#F2F2F2','NH','3')
+
+changeChemicals('#01DFA5','Ni','2+')
+changeChemicals('#00BFFF','Cu','2+')
+changeChemicals('#E6E6E6','Zn','2+')
+changeChemicals('#F7819F','Co','2+')
+changeChemicals('#B404AE','Ti','3+')
+changeChemicals('#A9F5A9','Fe','2+')
+changeChemicals('#F7D358','Fe','3+')
+changeChemicals('#3B0B39','V','2+')
+changeChemicals('#BE81F7','Cr','3+')
+changeChemicals('#F800C7','Mn','2+')
+
+
+if(clicks==1)	
+				document.getElementById('g9291').setAttribute("offset", "90%");
+				change('url(#g929)');
+				else if(clicks==2 || clicks==3)	change('url(#g928)');
+				else if(clicks==4 || clicks==5)	change('url(#g927)');
+				else change('url(#g926)');
+
+<linearGradient id="g928" x1="0%" y1="100%" x2="0%" y2="0%">
+    <stop offset="0%" stop-color="#00BFFF" stop-opacity=""1" />
+      <stop offset="30%" stop-color="#D0FA58" stop-opacity="1" />
+    </linearGradient>
+	  <linearGradient id="g927" x1="0%" y1="100%" x2="0%" y2="0%">
+    <stop offset="0%" stop-color="#00BFFF" stop-opacity=""1" />
+      <stop offset="15%" stop-color="#D0FA58" stop-opacity="1" />
+    </linearGradient>
+	  <linearGradient id="g926" x1="0%" y1="100%" x2="0%" y2="0%">
+    <stop offset="0%" stop-color="#00BFFF" stop-opacity=""1" />
+      <stop offset="0%" stop-color="#D0FA58" stop-opacity="1" />
+    </linearGradient>
+
+
+if(limit > 0)
+				{
+					document.getElementById('g9291').setAttribute("offset", limit);
+					change('url(#g929)');
+				}
+				else
+				{
+					document.getElementById('g9291').setAttribute("offset", 0);
+					change('url(#g929)');
+				}
+
+
+
+
+/*if(u=="h9191")
+			{
+				if(l>0)
+				{
+					document.getElementById('h9191').setAttribute("offset", l);
+					change('url(#h919)');
+				}
+				else
+				{
+					document.getElementById('h9191').setAttribute("offset", 0);
+					change('url(#h919)');
+				}
+			}
+
+
+
+<div style="visibility: hidden;display=''"
+
+    <p># At First you have to select the complex chemical which you need <br><br>
+		# Use the Upper button to drop the chemical into the Flask<br><br>
+		# Use the Bottom button to decrease the chemical level<br><br>
+		# The Complex chemical level must be grater than <b>40 ml </b> 
+		to mix the prefer acid or base with that<br><br>
+		# If we mix the complex chemical with acid or base there will be a color change in the flask, 
+		at the same time you can see the PH change in the PH scalar. <br><br>
+
+	</p>
+    <button class="close-btn">Close</button>
+
+</div>
+onmouseover="mouseOver('Click on the button ','for reduce the volume')" onmouseout="mouseOut()"
+function mouseOverbtn(r,s)
+{
+		var fillcolor1 = document.getElementById("buttombutton").getAttribute("fill");
+		var fillcolor2 = document.getElementById("tapbutton").getAttribute("fill");
+	if(fillcolor1==#E00606 || fillcolor2==#E00606 )
+	{
+		document.getElementById('text1').textContent = r;
+		document.getElementById('text2').textContent = s;
+	}
+	else
+	{
+		document.getElementById('text1').textContent = "You can't click";
+		document.getElementById('text2').textContent = "the button";
+	}
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Example of Auto Loading Bootstrap Modal on Page Load</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#myModal").modal('show');
+	});
+</script>
+</head>
+<body>
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Subscribe our Newsletter</h4>
+            </div>
+            <div class="modal-body">
+				<p>Subscribe to our mailing list to get the latest updates straight in your inbox.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Email Address">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>         
+
+############# popup
+	.modalDialog {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+.modalDialog:target {
+    opacity:1;
+    pointer-events: auto;
+}
+.modalDialog > div {
+    width: 400px;
+    position: relative;
+    margin: 10% auto;
+    padding: 5px 20px 13px 20px;
+    border-radius: 10px;
+    background: #fff;
+    background: -moz-linear-gradient(#fff, #999);
+    background: -webkit-linear-gradient(#fff, #999);
+    background: -o-linear-gradient(#fff, #999);
+}
+.close {
+    background: #606061;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+}
+.close:hover {
+    background: #00d9ff;
+}
+
+<a href="#openModal">Open Modal</a>
+
+<div id="openModal" class="modalDialog">
+    <div>	<a href="#close" title="Close" class="close">X</a>
+
+        	<h2>Modal Box</h2>
+
+        <p>This is a sample modal box that can be created using the powers of CSS3.</p>
+        <p>You could do a lot of things here like have a pop-up ad that shows when your website loads, or create a login/register form for users.</p>
+    </div>
+</div>
+
+
+or
+.ontop {
+				z-index: 999;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				display: none;
+				position: absolute;				
+				background-color: #cccccc;
+				color: #aaaaaa;
+				opacity: .4;
+				filter: alpha(opacity = 50);
+			}
+			#popup {
+				width: 300px;
+				height: 200px;
+				position: absolute;
+				color: #000000;
+				background-color: #ffffff;
+				/* To align popup window at the center of screen*/
+				top: 50%;
+				left: 50%;
+				margin-top: -100px;
+				margin-left: -150px;
+			}
+
+Copyright (c) 2012-2016 Thibaut Courouble
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: 
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. 
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
+
+
+if(click ==1)
+			{
+					var aquaname=document.getElementById('aquaname').textContent;
+				console.log(aquaname);
+				/*for(i=1;i<=11;i++)
+				{
+					var rec="re"+i;
+					console.log(rec);
+					document.getElementById('rec').addEventListener('click', function(){
+				}*/
+					switch (aquaname) {
+						  case "Drain Cleaner":var ph=13.0;var n=112;var m=140;break;
+						  case "Hand Soap":var ph=10.0;var n=202;var m=230;break;
+						  case "Milk": var ph=6.5;var n=307;var m=335;break;
+						  case "Blood": var ph=7.4;var n=279.88;var m=307.88;break;
+						  case "Eggs Yolks": var ph=7.3;var n=280;var m=310;break;
+						  case "Chicken Soup": var ph=5.8;var n=327.75;var m=355.75;break;
+						  case "Coffee": var ph=5.0;var n=352;var m=380;break;
+						  case "Orange Juice": var ph=3.5;var n=396.85;var m=424.85;break;
+						  case "Soda Pop": var ph=2.5;var n=426.85;var m=454.85;break;
+						  case "Vomit": var ph=2.0;var n=442;var m=470;break;
+						  case "Battery Acid": var ph=1.0;var n=472;var m=500;break;  
+					}
+					
+				if(limit>0.1 && limit<=1)
+				{
+					var inc = ((21-mm)/2)/100;
+					console.log(inc);
+					limit = limit -inc;console.log(limit);
+					document.getElementById("round").setAttribute("fill-opacity", limit); 
+					if(ph>7)
+					{
+						var phinc1 = (294-n)/(42-mm);
+						y2=y2+phinc1;
+						var phinc2 = (322-m)/(42-mm);
+						y3=y3+phinc2;console.log(phinc1,phinc2,y2,y3,ph);
+						ph1.setAttribute( 'transform', 'matrix('  + a2 + ' ' + b2 + ' ' + c2 + ' ' + d2 + ' ' + x2 + ' ' + y2 + ')');
+						ph2.setAttribute( 'transform', 'matrix('  + a3 + ' ' + b3 + ' ' + c3 + ' ' + d3 + ' ' + x3 + ' ' + y3 + ')');
+						if((ph-7.1)>1){
+							var phh=ph-count*((ph-7.1)/((ph-7.1)*9));
+						console.log(phh);
+						}
+						else{
+							var phh=ph-count*((ph-7.1)/100);
+						console.log(phh);
+						}
+						//phh= phh-roundToTwo(phinc1);console.log(phh);
+						document.getElementById("phtext").textContent =roundToTwo(phh);
+					}
+					else if(ph<7)
+					{
+						var phinc1 = (n-294)/(42-mm);
+						y2=y2+phinc1;
+						var phinc2 = (m-322)/(42-mm);
+						y3=y3+phinc2;
+						ph1.setAttribute( 'transform', 'matrix('  + a2 + ' ' + b2 + ' ' + c2 + ' ' + d2 + ' ' + x2 + ' ' + y2 + ')');
+						ph2.setAttribute( 'transform', 'matrix('  + a3 + ' ' + b3 + ' ' + c3 + ' ' + d3 + ' ' + x3 + ' ' + y3 + ')');
+						if((6.9-ph)>1){
+							var phh=ph-count*((6.9-ph)/((6.9-ph)*9));
+						console.log(phh);
+						}
+						else{
+							var phh=ph-count*((6.9-ph)/100);
+						console.log(phh);
+						}
+						//phh= phh-roundToTwo(phinc1);console.log(phh);
+						document.getElementById("phtext").textContent =roundToTwo(phh);
+					}
+				
+					else{
+						ph1.setAttribute( 'transform', 'matrix('  + a2 + ' ' + b2 + ' ' + c2 + ' ' + d2 + ' ' + x2 + ' ' + 294 + ')');
+						ph2.setAttribute( 'transform', 'matrix('  + a3 + ' ' + b3 + ' ' + c3 + ' ' + d3 + ' ' + x3 + ' ' + 322 + ')');
+						document.getElementById("phtext").textContent = 7.0;
+					}
+					count++;
+				}
+				
+				if (limit <= 0.1 && limits==0.1)
+				{
+					document.getElementById("round").setAttribute("fill", '#DBFFFF');
+					document.getElementById("phtext").textContent =7.10;
+				}
+				
+				if(limit <= 0.1 && limits<=1)
+				{
+						var inc = ((21-mm)/2)/100;console.log(inc);
+						limits = limits +inc;console.log(limits);
+						document.getElementById("round").setAttribute("fill-opacity", limits);
+						
+						if(ph>7)
+						{
+							var phinc1 = (294-n)/(42-mm);
+							y2=y2+phinc1;
+							var phinc2 = (322-m)/(42-mm);
+							y3=y3+phinc2;console.log(phinc1,phinc2,y2,y3,ph);
+							ph1.setAttribute( 'transform', 'matrix('  + a2 + ' ' + b2 + ' ' + c2 + ' ' + d2 + ' ' + x2 + ' ' + y2 + ')');
+							ph2.setAttribute( 'transform', 'matrix('  + a3 + ' ' + b3 + ' ' + c3 + ' ' + d3 + ' ' + x3 + ' ' + y3 + ')');
+								var php =document.getElementById("phtext").value;
+								var phh=php-((7.1-7)/100);
+								//var phh=php-count*((7.1-7)/100);
+							console.log(phh);
+							
+							//phh= phh-roundToTwo(phinc1);console.log(phh);
+							document.getElementById("phtext").textContent =roundToTwo(phh);
+						}
+						else if(ph<7)
+						{
+							var phinc1 = (n-294)/(42-mm);
+							y2=y2+phinc1;
+							var phinc2 = (m-322)/(42-mm);
+							y3=y3+phinc2;
+							ph1.setAttribute( 'transform', 'matrix('  + a2 + ' ' + b2 + ' ' + c2 + ' ' + d2 + ' ' + x2 + ' ' + y2 + ')');
+							ph2.setAttribute( 'transform', 'matrix('  + a3 + ' ' + b3 + ' ' + c3 + ' ' + d3 + ' ' + x3 + ' ' + y3 + ')');
+							
+							var php =document.getElementById("phtext").value;
+								var phh=php-((7-6.9)/100);
+								//var phh=ph-count*((6.9-ph)/100);
+							
+							//phh= phh-roundToTwo(phinc1);console.log(phh);
+							document.getElementById("phtext").textContent =roundToTwo(phh);
+						}
+			
+					else{
+						ph1.setAttribute( 'transform', 'matrix('  + a2 + ' ' + b2 + ' ' + c2 + ' ' + d2 + ' ' + x2 + ' ' + 294 + ')');
+						ph2.setAttribute( 'transform', 'matrix('  + a3 + ' ' + b3 + ' ' + c3 + ' ' + d3 + ' ' + x3 + ' ' + 322 + ')');
+						document.getElementById("phtext").textContent = 7.0;
+					}
+				count++;
+			}
+			if(limits>=1){
+				document.getElementById("neutral").style.display = "";
+						
+				document.getElementById("neutral").style.visibility = "visible";
+							
+			}
+		}

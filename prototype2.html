@@ -19,9 +19,61 @@
             width: 100%;
         }
 	.page{ position:relative; }
-	</style>
-</head>
-<body>
+	
+	.modalDialog {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+	font-size :20px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+.modalDialog:target {
+    opacity:1;
+    pointer-events: auto;
+}
+.modalDialog > div {
+    width: 600px;
+    position: relative;
+    margin: 10% auto;
+    padding: 5px 20px 5px 20px;
+    border-radius: 10px;
+    background: #fff;
+    background: -moz-linear-gradient(#fff, #999);
+    background: -webkit-linear-gradient(#fff, #999);
+    background: -o-linear-gradient(#fff, #999);
+}
+.close {
+    background: #606061;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+}
+.close:hover {
+    background: #00d9ff;
+}
+</style>
+
 <script type="application/ecmascript">
 var m=0;
 var clicks=0;
@@ -30,10 +82,32 @@ var limit=1;
 
 function changeCursor(el, cursor){	el.style.cursor = cursor;}
 
-function reloadPage() {	location.reload();}
+function reloadPage() {	
+
+//setTimeout(function(){show.style.visibility = "hidden"; }, 500);
+
+location.reload();
+}
+
+/*$("#col1").on("mouseover", function(){
+			document.getElementById('text1').textContent = "Choose the aqua";
+		document.getElementById('text2').textContent = "chemical!"
+		});*/
+function mouseOver(r,s)
+{
+    document.getElementById('text1').textContent = r;
+						document.getElementById('text2').textContent = s;
+}
+function mouseOut()
+{
+    document.getElementById('text1').textContent = "";
+						document.getElementById('text2').textContent = "";
+}
 
 function changeChemicals(v,s,r){
-		
+		var t1 = document.getElementById('acidname');
+		var t2 = document.getElementById('blacidname');
+		t1.textContent = "Mixed with";t2.textContent = "";
 		document.getElementById("rect1").setAttribute("height", "250"); 
 			var current = document.getElementById('rect1').getBBox().height;
 		document.getElementById("visiblerect").setAttribute("height", "412"); 
@@ -51,9 +125,11 @@ function changeChemicals(v,s,r){
 		var col = document.getElementById("col");
 		document.getElementById("col").setAttribute("fill",v); 
 		document.getElementById("col").setAttribute("stroke",v); 
-		document.getElementById('col').addEventListener('click', function(){m=0;});
+		//document.getElementById('col').addEventListener('click', function(){m=0;});
 		document.getElementById('textname').textContent = s;
 		document.getElementById('upname').textContent = r;
+		document.getElementById('text1').textContent = "Add the aqua";
+		document.getElementById('text2').textContent = "chemical in Flask!"
 		
 		
 		document.getElementById("visiblerect").setAttribute("fill", v); 
@@ -102,8 +178,15 @@ function changeDimensions() {
 		var a1 = t.transform.baseVal.consolidate().matrix.a;var b1 = t.transform.baseVal.consolidate().matrix.b;var c1 = t.transform.baseVal.consolidate().matrix.c;var d1 = t.transform.baseVal.consolidate().matrix.d;var x1 = t.transform.baseVal.consolidate().matrix.e;var y1 = t.transform.baseVal.consolidate().matrix.f;
 		
 		var fillcolor = document.getElementById("visiblerect").getAttribute("fill");
-
-		if(current>0 && current<=250)
+		//var col = document.getElementById("col");
+		switch (current) {
+					  
+					  case 250: document.getElementById('text1').textContent = "You can't add";document.getElementById('text2').textContent = "Acid/Base Now!";break;
+					  case 180: document.getElementById('text1').textContent = "Now You can add";document.getElementById('text2').textContent = "Acid/Base!";break;
+					  
+					}
+	
+		if(current>0 && current<250)
 		{
 			changeCursor(button2, 'pointer');
 			button2.style.fill="#E00606";				
@@ -120,7 +203,7 @@ function changeDimensions() {
 				showme.style.visibility = "visible";
 			}
 			
-			setTimeout(function(){showme.style.visibility = "hidden"; }, 1000);
+			setTimeout(function(){showme.style.visibility = "hidden"; }, 500);
 			
 				if (current == 250)  m = 5;
 				else m = m+5;
@@ -139,23 +222,25 @@ function changeDimensions() {
 				document.getElementById('volmeter').textContent = m+'.00 ml';
 				console.log(m);
 				
+				
 				if(current==90)
 				{
 					document.getElementById('volmeter').setAttribute("fill","#FF0000");
+					document.getElementById('text1').textContent = "You can't add";
+					document.getElementById('text2').textContent = "more aqua chemical!";
 				}
 				else{
 					document.getElementById('volmeter').setAttribute("fill","#000000");
 				}
-	
 		}
-		else if(current>=39 && fillcolor=="#E6E6F6" && click==0)
+		else if(current>=39 && current <=170 && fillcolor=="#E6E6F6" && click==0)
 		{
 			showme.style.display = "";
 			if(showme.style.visibility == "hidden" ) {
 				showme.style.visibility = "visible";
 			}
 			
-			setTimeout(function(){showme.style.visibility = "hidden"; }, 1000);
+			setTimeout(function(){showme.style.visibility = "hidden"; }, 500);
 			
 				console.log(current);
 				current = current - 10;
@@ -174,6 +259,8 @@ function changeDimensions() {
 				if(current==30)
 				{
 					document.getElementById('volmeter').setAttribute("fill","#FF0000");
+					document.getElementById('text1').textContent = "You can't add";
+					document.getElementById('text2').textContent = "more Acid!";
 					current=0;
 				}
 				else{
@@ -203,14 +290,14 @@ function changeDimensions() {
 				
 
 		}
-		else if(current>=39 && fillcolor=="#F2F2F2" && clicks==0)
+		else if(current>=39 && current<=170 && fillcolor=="#F2F2F2" && clicks==0)
 		{
 			showme.style.display = "";
 			if(showme.style.visibility == "hidden" ) {
 				showme.style.visibility = "visible";
 			}
 			
-			setTimeout(function(){showme.style.visibility = "hidden"; }, 1000);
+			setTimeout(function(){showme.style.visibility = "hidden"; }, 500);
 			
 				console.log(current);
 				current = current - 10;
@@ -229,10 +316,13 @@ function changeDimensions() {
 				if(current==30)
 				{
 					document.getElementById('volmeter').setAttribute("fill","#FF0000");
+						document.getElementById('text1').textContent = "You can't add";
+						document.getElementById('text2').textContent = "more Base!";
 					current=0;
 				}
 				else{
 					document.getElementById('volmeter').setAttribute("fill","#000000");
+					
 				}
 				
 				document.getElementById('colnh').addEventListener('click', function(){click=0;});
@@ -263,6 +353,8 @@ function changeDimensions() {
 			showme.style.visibility = "hidden";
 			button.style.fill="#809797";
 		}
+		
+					
 			
 }
 
@@ -296,13 +388,16 @@ function changeHeight() {
 			if(showme.style.visibility == "hidden" ) {
 				showme.style.visibility = "visible";
 			}
-			
-		 setTimeout(function(){showme.style.visibility = "hidden"; }, 1000);
+			var fillcol = document.getElementById("round").getAttribute("fill");
+			showme.setAttribute("fill",fillcol);
+		 setTimeout(function(){showme.style.visibility = "hidden"; }, 500);
 			
 				
 				console.log(current);
 				current = current + 10;
 				document.getElementById("rect1").setAttribute("height", current);
+				current2 = current2 + 10;
+				document.getElementById("visiblerect").setAttribute("height", current2);
 				
 				y=y+10;y1=y1+10;
 				r.setAttribute( 'transform', 'matrix('  + a + ' ' + b + ' ' + c + ' ' + d + ' ' + x + ' ' + y + ')');
@@ -310,6 +405,8 @@ function changeHeight() {
 				m=m-5;
 				document.getElementById('volmeter').textContent = m+'.00 ml';
 				console.log(y);
+					
+					
 		}
 		
 		else
@@ -322,22 +419,48 @@ function changeHeight() {
 }
 
 function change(v){	document.getElementById("round").setAttribute("fill", v); } 
+
+/*function colchange(Rndfillcolor){
+			var button = document.getElementById("tapbutton");
+				var t1 = document.getElementById('acidname');
+				var t2 = document.getElementById('blacidname');
+				t1.textContent = "Mixed with";t2.textContent = "";
+			document.getElementById('col').addEventListener('click', 
+			function(){
+			document.getElementById("visiblerect").setAttribute("fill", Rndfillcolor); 
+			document.getElementById("visiblerect2").setAttribute("fill",Rndfillcolor);
+			
+			document.getElementById("round").setAttribute("fill", Rndfillcolor); 
+			document.getElementById("tapcol1").setAttribute("fill", Rndfillcolor); 
+			document.getElementById("tapcol2").setAttribute("fill", Rndfillcolor); 
+			document.getElementById("tapcol3").setAttribute("fill", Rndfillcolor); 
+			
+			changeCursor(button, 'pointer');
+			button.style.fill="#E00606";});
+
+}
+*/
 function relod(){
-		document.getElementById('col1').addEventListener('click', function(){limit=1;clicks=0;click=0;m=0;});
-		document.getElementById('col2').addEventListener('click', function(){limit=1;clicks=0;click=0;m=0;});
-		document.getElementById('col3').addEventListener('click', function(){limit=1;clicks=0;click=0;m=0;});
-		document.getElementById('col4').addEventListener('click', function(){limit=1;clicks=0;click=0;m=0;});
-		document.getElementById('col5').addEventListener('click', function(){limit=1;clicks=0;click=0;m=0;});
-		document.getElementById('col6').addEventListener('click', function(){limit=1;clicks=0;click=0;m=0;});
-		document.getElementById('col7').addEventListener('click', function(){limit=1;clicks=0;click=0;m=0;});
-		document.getElementById('col8').addEventListener('click', function(){limit=1;clicks=0;click=0;m=0;});
-		document.getElementById('col9').addEventListener('click', function(){limit=1;clicks=0;click=0;m=0;});
-		document.getElementById('col10').addEventListener('click', function(){limit=1;clicks=0;click=0;m=0;});
+		var r = document.getElementById('acidname');
+		var t = document.getElementById('blacidname');
+		var t1=document.getElementById('text1');
+		var t2=document.getElementById('text2');
+		
+		document.getElementById('col1').addEventListener('click', function(){limit=1;clicks=0;click=0;m=0;r.textContent = "Mixed with";t.textContent = "";});
+		document.getElementById('col2').addEventListener('click', function(){limit=1;clicks=0;click=0;m=0;r.textContent = "Mixed with";t.textContent = "";});
+		document.getElementById('col3').addEventListener('click', function(){limit=1;clicks=0;click=0;m=0;r.textContent = "Mixed with";t.textContent = "";});
+		document.getElementById('col4').addEventListener('click', function(){limit=1;clicks=0;click=0;m=0;r.textContent = "Mixed with";t.textContent = "";});
+		document.getElementById('col5').addEventListener('click', function(){limit=1;clicks=0;click=0;m=0;r.textContent = "Mixed with";t.textContent = "";});
+		document.getElementById('col6').addEventListener('click', function(){limit=1;clicks=0;click=0;m=0;r.textContent = "Mixed with";t.textContent = "";});
+		document.getElementById('col7').addEventListener('click', function(){limit=1;clicks=0;click=0;m=0;r.textContent = "Mixed with";t.textContent = "";});
+		document.getElementById('col8').addEventListener('click', function(){limit=1;clicks=0;click=0;m=0;r.textContent = "Mixed with";t.textContent = "";});
+		document.getElementById('col9').addEventListener('click', function(){limit=1;clicks=0;click=0;m=0;r.textContent = "Mixed with";t.textContent = "";});
+		document.getElementById('col10').addEventListener('click',function(){limit=1;clicks=0;click=0;m=0;r.textContent = "Mixed with";t.textContent = "";});
 }
 	
 function colorHCl(l,u)
 {
-			if(u=="h9091")
+			if(u=="h9091") 
 			{
 				if(l>0){document.getElementById('h9091').setAttribute("offset", l);change('url(#h909)');}
 						else{document.getElementById('h9091').setAttribute("offset", 0);change('url(#h909)');}
@@ -440,10 +563,36 @@ function colorNH(l,u)
 						else{document.getElementById('n9991').setAttribute("offset", 0);change('url(#n999)');}
 			}
 }
+
+function pop() {
+				document.getElementById('openModal').style.display = 'block';
+			}
+			function hide() {
+				document.getElementById('openModal').style.display = 'none';
+			}
+			//To detect escape button
+			document.onkeydown = function(evt) {
+				evt = evt || window.event;
+				if (evt.keyCode == 27) {
+					hide();
+				}
+			}
+	function ChangeBackgroundColor(row) {
+        row.style.backgroundColor ='rgb(218,255,255)';
+    }
+
+    function RestoreBackgroundColor(row) {
+        row.style.backgroundColor = 'none';
+    }
+			
 </script>
+</head>
+<body onload="pop()">
+
 
 <div class="page">
 <div class="svg-layer">
+
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="ShapeDemo" pageAlignment="none" x="0px" y="0px" viewBox="0 0 1300 659" enable-background="new 0 0 1300 659" xml:space="preserve">
 <defs>
 	<linearGradient id="h909" x1="0%" y1="100%" x2="0%" y2="0%">
@@ -565,13 +714,13 @@ function colorNH(l,u)
 		</g>
 	</g>
 
-	<text  type="textBox"  transform="matrix(1 0 0 1 71.00000000000011 62.000000000000014)" width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
+	<text  type="textBox" onmouseover="mouseOver('You can Choose','Specific Chemical')" onmouseout="mouseOut()" transform="matrix(1 0 0 1 71.00000000000011 62.000000000000014)" width="171.7073170731707" height="29" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="25" text-align="left" text-anchor="start">
 	<tspan x="35" y="15" id="upname" font-size="20">2+</tspan>
 	<tspan id="textname" x="0" y="25">Mn</tspan>
 	<tspan x="50" y="28" id="bltname" font-size="20">(aq)</tspan>
 	</text>
 
-	<path id="col" transform="matrix(1 0 0 1 38.000000000000114 67.00000000000001)" width="23.414634146341484" height="23.414634146341456" stroke-width="2" stroke-miterlimit="3" stroke="#F800C7" stroke-opacity="1" fill="#F800C7" fill-opacity="1" d="M0,0 L23.414634146341484,0 L23.414634146341484,23.414634146341456 L0,23.414634146341456 L0,0 Z "/>
+	<path id="col" onmouseover="mouseOver('You can Choose','Specific Chemical')" onmouseout="mouseOut()" transform="matrix(1 0 0 1 38.000000000000114 67.00000000000001)" width="23.414634146341484" height="23.414634146341456" stroke-width="2" stroke-miterlimit="3" stroke="#F800C7" stroke-opacity="1" fill="#F800C7" fill-opacity="1" d="M0,0 L23.414634146341484,0 L23.414634146341484,23.414634146341456 L0,23.414634146341456 L0,0 Z "/>
 
 	<path transform="matrix(1 0 0 1 250.00000000000023 56.000000000000014)" height="45" stroke-width="3" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M-1.1368683772161603e-13,0 L-1.1368683772161603e-13,45 "/>
 
@@ -623,6 +772,11 @@ function colorNH(l,u)
 
 	<text type="textBox" transform="matrix(1 0 0 1 641.0838815847758 285.4559288152551)" width="113.17073170732125" height="62" stroke-width="3.0093119224978935" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="27" text-align="left" text-anchor="start">
 	<tspan  x="0" y="27">Volume</tspan>
+	</text>
+	
+	<text type="textBox" transform="matrix(1 0 0 1 791.0838815847758 255.4559288152551)" width="113.17073170732125" height="62" stroke-width="3.0093119224978935" stroke-miterlimit="3" stroke="none" fill="#FF0000" fill-opacity="1" font-family="Arial" font-size="27" text-align="left" text-anchor="start">
+	<tspan  id="text1" x="0" y="27">First add the aqua</tspan>
+	<tspan  id="text2" x="20" y="65">chemical in Flask!</tspan>
 	</text>
 
 	<text type="textBox" transform="matrix(1 0 0 1 689.9999999999999 65.00000000000001)" width="115.68257497740595" height="28" stroke-width="0" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="24" text-align="left" text-anchor="start">
@@ -829,7 +983,7 @@ function colorNH(l,u)
 	<tspan x="0" y="22">Excess</tspan>
 	</text>
 -->
-	<g transform="matrix(1 0 0 1 672.2621951219517 103.00000000000004)">
+	<g transform="matrix(1 0 0 1 672.2621951219517 103.00000000000004)" onmouseover="mouseOver('You can Choose ','Acid/Base')" onmouseout="mouseOut()">
 		<path width="207.0000000000001" height="83.51219512195141" stroke-width="1.995654594237837" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M0,0 L207.0000000000001,0 L207.0000000000001,83.51219512195141 L0,83.51219512195141 L0,0 Z "/>
 		<text type="textBox" transform="matrix(1 0 0 1 17.737804878048223 8.999999999999943)" 
 		id="colhcl" onclick="changeChemicals2('#E6E6F6','HCL','')" cursor="pointer"
@@ -845,7 +999,7 @@ function colorNH(l,u)
 		</text>
 	</g>
 
-	<g transform="matrix(1 0 0 1 24.19512195121962 103.02439024390206)">
+	<g onmouseover="mouseOver('You can Choose','Specific Chemical')" onmouseout="mouseOut()" transform="matrix(1 0 0 1 24.19512195121962 103.02439024390206)">
 		<path width="280.00000000000006" height="491.70731707317077" stroke-width="2" stroke-miterlimit="3" stroke="#000000" stroke-opacity="0.98" fill="#FFFFFF" fill-opacity="0.14666666666666667" d="M0,0 L280.00000000000006,0 L280.00000000000006,491.70731707317077 L0,491.70731707317077 L0,0 Z "/>
 
 		<g transform="matrix(1 0 0 1 13.804878048780537 7.902439024390702)">
@@ -996,18 +1150,16 @@ function colorNH(l,u)
 	<rect id="visiblerect" width="15.5" height="412" x="526.86" y="198.54"
 				style="visibility: hidden;display=''" stroke="none"   fill="#F800C7" />
 				
-	
-	
-	
-	
 	<path transform="matrix(1 0 0 1 904.6758130081301 513.0020325203252)" width="58.93495934959378" height="55.58638211382936" stroke-width="14.384935862446678" stroke-miterlimit="3" stroke="#FFA300" stroke-opacity="0.98" fill="#FFFFFF" d="M-2.2737367544323206e-13,27.793191056914452 C-2.2737367544323206e-13,12.44343409268447 13.193038556097235,-3.410605131648481e-13 29.467479674796778,-3.410605131648481e-13 C45.741920793495865,-3.410605131648481e-13 58.934959349593555,12.44343409268447 58.934959349593555,27.793191056914452 C58.934959349593555,43.14294802114432 45.741920793495865,55.58638211382902 29.467479674796778,55.58638211382902 C13.193038556097235,55.58638211382902 -2.2737367544323206e-13,43.14294802114432 -2.2737367544323206e-13,27.793191056914452 Z "/>
 	
 	<path transform="matrix(0.9396926207859083 -0.34202014332566877 0.34202014332566877 0.9396926207859083 948.2573900959684 516.976570407513)" width="9.376016260162942" height="23" stroke-width="13.999999999999998" stroke-linecap="round" stroke-miterlimit="3" stroke="#FFA300" fill="#575454" fill-opacity="0.98" d="M0,-1.1368683772161603e-13 L-9.376016260162942,22.999999999999886 "/>
 
 	<path transform="matrix(0.8660254037844386 -0.5000000000000001 0.5000000000000001 0.8660254037844386 948.5950889202444 514.2639298322335)" width="17.41260162601634" height="22.770325203250195" stroke-width="14" stroke-linecap="round" stroke-miterlimit="3" stroke="#FFA300" fill="#575454" fill-opacity="0.98" d="M0,0 L17.41260162601634,22.770325203250195 "/><path transform="matrix(0.992546151641322 0.12186934340514752 -0.12186934340514752 0.992546151641322 942.3522582219476 492.208675579263)" width="15.173061747986822" height="37.78308117488717" stroke-width="7.1503117589976855" stroke-linecap="round" stroke-miterlimit="3" stroke="#FFFFFF" stroke-opacity="0.98" fill="#FFFFFF" d="M9.094947017729282e-13,5.684341886080802e-14 L-15.173061747985912,1.1368683772161603e-13 L-15.17306174798523,37.78308117488717 L6.821210263296962e-13,37.78308117488723 L9.094947017729282e-13,5.684341886080802e-14 Z "/>
-	<path transform="matrix(1 0 0 1 72.88922764227637 609.4410569105693)" width="100" height="32.146341463414615" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" stroke="#6D6363" fill="#FFFFFF" fill-opacity="0.36" d="M0,0 L159.3922764227642,0 L159.3922764227642,32.146341463414615 L0,32.146341463414615 L0,0 Z "/>
-	<text type="textBox" transform="matrix(1 0 0 1 94.27032520325135 611.674796747973)" width="100" height="25" stroke-width="3.0093119224978935" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="22" text-align="left" text-anchor="start">
-	<tspan x="0" y="22">HELP</tspan></text>
+	
+	<path transform="matrix(1 0 0 1 72.88922764227637 609.4410569105693)" onClick="pop()" cursor="pointer" onmouseover="mouseOver('Click on Help ','to get Help')" onmouseout="mouseOut()" 
+	width="100" height="32.146341463414615" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" stroke="#6D6363" fill="#FFFFFF" fill-opacity="0.36" d="M0,0 L159.3922764227642,0 L159.3922764227642,32.146341463414615 L0,32.146341463414615 L0,0 Z "/>
+	<text type="textBox" transform="matrix(1 0 0 1 110 612)" onClick="pop()" cursor="pointer" width="100" height="25" stroke-width="3.0093119224978935" stroke-miterlimit="3" stroke="none" fill="#000000" fill-opacity="1" font-family="Arial" font-size="22" text-align="left" text-anchor="start">
+	<tspan x="0" y="22"><a href="#openModal" onClick="pop()">HELP</a></tspan></text>
 	
 	<path id="relodbutton" onmouseover="changeCursor(this,'pointer');" onclick="reloadPage()" transform="matrix(1 0 0 1 890.0951275971755 486.58827400153547)" width="100.45731707317054" height="100.45731707317077" 
 	stroke-width="2.495776947531305" stroke-miterlimit="3" stroke="#6D6363" fill="#FFFFFF" fill-opacity="0.013333333333333334" 
@@ -1020,21 +1172,47 @@ function colorNH(l,u)
 
 	<path transform="matrix(1 0 0 1 502.84654471544474 26.763772095803418)" width="65.63" height="50.94806556449309" stroke-width="3" stroke-linecap="round" stroke-miterlimit="3" stroke="#6D6363" fill="#BBA05B" d="M-4.547473508864641e-13,-2.842170943040401e-14 L65.62999999999954,-2.842170943040401e-14 L65.62999999999954,50.948065564493064 L-4.547473508864641e-13,50.948065564493064 L-4.547473508864641e-13,-2.842170943040401e-14 Z "/>
 
-	<path id="tapbutton" onclick="changeDimensions()" cursor="pointer"
+	<path id="tapbutton" onclick="changeDimensions()" cursor="pointer" 
 		transform="matrix(1 0 0 1 511.55284552845336 30.13719512195229)" width="45.54065040650414" height="44.20121951219511" stroke-width="4" stroke-miterlimit="3" stroke="#575454" stroke-opacity="1" fill="#E00606" d="M0,22.100609756097555 C0,9.894778917073168 10.19462070243904,0 22.77032520325207,0 C35.3460297040651,0 45.54065040650414,9.894778917073168 45.54065040650414,22.100609756097555 C45.54065040650414,34.30644059512194 35.3460297040651,44.20121951219511 22.77032520325207,44.20121951219511 C10.19462070243904,44.20121951219511 0,34.30644059512194 0,22.100609756097555 Z "/>
 	
 	<path id="tapcol2" transform="matrix(1 0 0 1 526.1624928657117 182.74447221857696)" width="17.500000000000114" height="15.000000000000028" stroke-width="2.5" stroke-miterlimit="3" stroke="#6D6363" fill="#F800C7" d="M-2.2737367544323206e-13,0 L17.499999999999886,0 L17.499999999999886,15.000000000000028 L-1.1368683772161603e-13,15.000000000000028 L-2.2737367544323206e-13,0 Z "/>
 	<path id="tapcol3" transform="matrix(1 0 0 1 506.8648373983754 81.70528455285084)" width="56.25609756097515" height="80.36585365853597" stroke-width="2.5" stroke-miterlimit="3" stroke="#6D6363" fill="#F800C7" d="M-5.684341886080801e-13,-2.842170943040401e-14 L56.25609756097458,-2.842170943040401e-14 L56.25609756097458,80.36585365853594 L-5.684341886080801e-13,80.36585365853594 L-5.684341886080801e-13,-2.842170943040401e-14 Z "/>
 	
-	<path transform="matrix(1 0 0 1 417.12296747967486 450)" width="30" height="2.678861788617951" stroke-width="0.09198550851713022" stroke-miterlimit="3" stroke="#000A09" fill="#030303" d="M0,0 L30,0 L30,-2.678861788617951 L0,-2.678861788617951 L0,0 Z "/></g></svg></div><div class="html-layer"/>
-		
+	<path transform="matrix(1 0 0 1 417.12296747967486 450)" width="30" height="2.678861788617951" stroke-width="0.09198550851713022" stroke-miterlimit="3" stroke="#000A09" fill="#030303" d="M0,0 L30,0 L30,-2.678861788617951 L0,-2.678861788617951 L0,0 Z "/>
+	<path transform="matrix(1 0 0 1 418.12296747967486 530)" width="30" height="2.678861788617951" stroke-width="0.09198550851713022" stroke-miterlimit="3" stroke="#000A09" fill="#030303" d="M0,0 L30,0 L30,-2.678861788617951 L0,-2.678861788617951 L0,0 Z "/>
 	
-		
+</g>
+
+</svg>
+
+</div>
+	
+<div class="html-layer"/>	
 </g>
 </svg>
 </div>
 
-<div class="html-layer"/></div>
+<div class="html-layer"/>
+<a href="#openModal"><font style="font-size:31px;margin-left:100px;">Help</font></a>
+
+<div id="openModal" class="modalDialog">
+    <div>	<a href="" title="Close" onClick="hide()" class="close">X</a>
+
+        	<h2>Help Me !</h2>
+
+         <p># At First you have to select the complex chemical which you need <br><br>
+		# Use the Upper button to drop the chemical into the Flask<br><br>
+		# Use the Bottom button to decrease the chemical level<br><br>
+		# The Complex chemical level must be grater than <b>40 ml </b> 
+		to mix the prefer acid or base with that<br><br>
+		# If we mix the complex chemical with acid or base there will be a color change in the flask, 
+		at the same time you can see the PH change in the PH scalar. <br><br>
+
+	</p>
+    </div>
+</div>
+
+</div>
 </div>
 </body>
 </html>
